@@ -1,20 +1,17 @@
 <template>
   <div class="app">
-    <Header :headerList="[1231231, 123123, 123]" @itemClick="test" />
-    <Button disabled>hah</Button><Button @click="visible = true">hah</Button>
-    <Dialog v-model:visible="visible" />
+    <lighting-header :headerList="[1231231, 123123, 123]" @itemClick="test" />
+    <lighting-button disabled>这是被禁用的按钮</lighting-button><lighting-button @click="visible = true">这是可用的按钮</lighting-button>
+    <lighting-dialog v-model:visible="visible" content="欢迎使用 lighting-ui ! 这是自己学习中搭建的ui框架，第一次尝试难免有许多问题，如有问题欢迎提 issue 反馈，期待你的 follow 和 star！ : )" :comfirm="() => {visible = false}"/>
+    <lighting-aside />
   </div>
 </template>
 
 <script lang="ts">
-import { Button, Header, Dialog } from "./lib/index"
 import { ref } from 'vue'
 export default {
   name: 'App',
   components: {
-    Button,
-    Header,
-    Dialog
   },
   setup() {
     const visible = ref(false);

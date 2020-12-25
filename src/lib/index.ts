@@ -1,9 +1,34 @@
-// export { default as Switch } from './Switch.vue';
+import { App } from 'vue'
 import lightHover from "./light-hover"
-export { default as Button } from './Button';
-export { default as Header } from './Header';
 lightHover();
-// export { default as Tabs } from './Tabs.vue';
-// export { default as Tab } from './Tab.vue';
-export { default as Dialog } from './Dialog';
-// export { openDialog as openDialog } from './openDialog';
+
+import Button from "./Button"
+import Header from "./Header"
+import Dialog from "./Dialog"
+import Aside from "./Aside"
+
+const components = [
+  Button,
+  Header,
+  Dialog,
+  Aside,
+]
+
+
+const install = (app: App): void => {
+  components.forEach(component => {
+    app.component(component.name, component)
+  })
+}
+
+
+export {
+  Button,
+  Header,
+  Dialog,
+  Aside
+}
+
+export default {
+  install
+}

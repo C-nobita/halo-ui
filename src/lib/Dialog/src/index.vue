@@ -1,10 +1,10 @@
 <template>
   <Teleport to="body">
     <div class="lighting_dialong_overlay" :class="{ 'show_dialog': visible }" @click.stop="emit('update:visible', false)">
-      <div class="lighting_dialong_wraper lighting_light_hover" :class="{ 'show_dialog_wraper': visible }" @click.stop="comfirm">
+      <div class="lighting_dialong_wraper lighting_light_hover" :class="{ 'show_dialog_wraper': visible }" @click.stop>
         <div class="lighting_dialong_wraper_content lighting_none">
-          <div class="content">12312312391isldkasdkpaoksdopajsfiosjdfiojasoidfjoiasdjfioajsdfoijaiosdfjioasjdfoisjdkasjdk</div>
-          <Button type="custom" class="lighting_dialong_wraper_content_btn">1212</Button>
+          <div class="content">{{ content }}</div>
+          <Button type="custom" class="lighting_dialong_wraper_content_btn" @click.stop="comfirm">{{ comfirmTxt }}</Button>
         </div>
       </div>
     </div>
@@ -26,6 +26,14 @@ export default defineComponent({
       type: Function,
       default: (e) => {
       }
+    },
+    content: {
+      type: String,
+      default: ''
+    },
+    comfirmTxt: {
+      type: String,
+      default: '好的'
     }
     // centralize: Boolean,
     // loading: Boolean,

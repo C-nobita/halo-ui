@@ -1,10 +1,9 @@
 <template>
   <div class="lighting_header lighting_light_hover">
-    <div class="lighting_header_wraper">
+    <div class="lighting_header_wraper lighting_none">
       <div class="lighting_header_wraper_content" :class="theme">
         <slot name="left"></slot>
         <Button
-          @click="emit('itemClick', item)"
           type="custom"
           class="lighting_header_wraper_content_item"
           v-for="(item, index) in headerList"
@@ -22,7 +21,7 @@
 import Button from "../../Button";
 import { defineComponent, computed } from "vue";
 export default defineComponent({
-  name: "lighting-button",
+  name: "lighting-header",
   props: {
     centralize: Boolean,
     loading: Boolean,
