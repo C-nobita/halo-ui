@@ -1,17 +1,19 @@
 import { App } from 'vue'
-import lightHover from "./light-hover"
-lightHover();
+import halo from "./halo"
+halo();
 
 import Button from "./Button"
 import Header from "./Header"
 import Dialog from "./Dialog"
 import Aside from "./Aside"
+import Dropdown from "./Dropdown"
 
 const components = [
   Button,
   Header,
   Dialog,
   Aside,
+  Dropdown
 ]
 
 

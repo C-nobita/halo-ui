@@ -1,11 +1,12 @@
 <template>
-  <div class="lighting_header lighting_light_hover">
-    <div class="lighting_header_wraper lighting_none">
-      <div class="lighting_header_wraper_content" :class="theme">
-        <slot name="left"></slot>
+  <div class="halo_header halo_hover">
+    <div class="halo_header_wraper halo_none" :class="theme">
+      <div class="halo_header_wraper_left">123</div>
+      <div class="halo_header_wraper_content" :class="theme">
         <Button
+          @click="emit('itemClick', item)"
           type="custom"
-          class="lighting_header_wraper_content_item"
+          class="halo_header_wraper_content_item"
           v-for="(item, index) in headerList"
           :key="index"
           >{{ item }}</Button
@@ -21,9 +22,12 @@
 import Button from "../../Button";
 import { defineComponent, computed } from "vue";
 export default defineComponent({
-  name: "lighting-header",
+  name: "halo-header",
   props: {
-    centralize: Boolean,
+    type: {
+      type: String,
+      default: ''
+    },
     loading: Boolean,
     headerList: {
       type: Array,
@@ -34,7 +38,7 @@ export default defineComponent({
     Button,
   },
   setup(props, { emit }) {
-    const theme = computed(() => [props.centralize ? 'centralize' : ''])
+    const theme = computed(() => [`halo_header_wraper_${props.type}`])
     return {
       emit,
       theme,
@@ -51,7 +55,7 @@ $radius: 4px;
 $red: red;
 $grey: grey;
 $white: #fff;
-.lighting_header {
+.halo_header {
   color: $color;
   width: 100%;
   height: 60px;
@@ -66,7 +70,7 @@ $white: #fff;
     background-color: $color;
     color: $white;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     &_content {
       &_item {
         width: 150px;
@@ -78,12 +82,15 @@ $white: #fff;
         padding: 0 2px;
       }
     }
+    &_left {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
-}
-.centralize {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: flex-end;
+  &_wraper_between {
+    justify-content: space-between;
+  }
 }
 </style>

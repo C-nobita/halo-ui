@@ -1,24 +1,28 @@
 <template>
   <div
-    class="lighting_aside lighting_light_hover"
-    :class="{ lighting_aside_close: !open }"
+    class="halo_aside halo_hover"
+    :class="{ halo_aside_close: !open }"
   >
-    <div class="lighting_aside_wraper lighting_none">
-      <div class="lighting_aside_header"></div>
+    <div class="halo_aside_wraper halo_none">
+      <div class="halo_aside_header">
+        <slot name="header"></slot>
+      </div>
       <div
-        class="lighting_aside_wraper_content lighting_light_hover"
-        :class="{ lighting_aside_wraper_content_close: !open }"
+        class="halo_aside_wraper_content halo_hover"
+        :class="{ halo_aside_wraper_content_close: !open }"
       >
         <Button
           @click="open = false"
-          class="lighting_aside_wraper_content_item"
+          class="halo_aside_wraper_content_item"
           type="custom"
           v-for="(item, index) in headerList"
           :key="index"
           >{{ item.name }}</Button
         >
       </div>
-      <div class="lighting_aside_footer"></div>
+      <div class="halo_aside_footer">
+        <slot name="footer"></slot>
+      </div>
       <Button type="custom" class="operator" @click="open = !open">icon</Button>
     </div>
   </div>
@@ -28,7 +32,7 @@
 import Button from "../../Button";
 import { defineComponent, computed, reactive, toRefs } from "vue";
 export default defineComponent({
-  name: "lighting-aside",
+  name: "halo-aside",
   props: {
     centralize: Boolean,
     loading: Boolean,
@@ -55,14 +59,12 @@ export default defineComponent({
     Button,
   },
   setup(props, { emit }) {
-    // const theme = computed(() => [props.centralize ? "centralize" : ""]);
     const data = reactive({
       open: false,
     });
     return {
       ...toRefs(data),
       emit,
-      // theme,
     };
   },
 });
@@ -76,11 +78,11 @@ $radius: 4px;
 $red: red;
 $grey: grey;
 $white: #fff;
-.lighting_aside {
+.halo_aside {
   position: absolute;
   top: 0;
   padding-right: 2px;
-  transition: transform 0.9s;
+  transition: transform .9s;
   &_wraper {
     width: 220px;
     height: 100vh;
@@ -120,9 +122,12 @@ $white: #fff;
   &_footer {
     width: 100%;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
-.lighting_aside_close {
+.halo_aside_close {
   transform: translateX(-100%);
 }
 </style>

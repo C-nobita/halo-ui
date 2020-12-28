@@ -1,10 +1,10 @@
 <template>
   <Teleport to="body">
-    <div class="lighting_dialong_overlay" :class="{ 'show_dialog': visible }" @click.stop="emit('update:visible', false)">
-      <div class="lighting_dialong_wraper lighting_light_hover" :class="{ 'show_dialog_wraper': visible }" @click.stop>
-        <div class="lighting_dialong_wraper_content lighting_none">
+    <div class="halo_dialong_overlay" :class="{ 'show_dialog': visible }" @click.stop="emit('update:visible', false)">
+      <div class="halo_dialong_wraper halo_hover" :class="{ 'show_dialog_wraper': visible }" @click.stop>
+        <div class="halo_dialong_wraper_content halo_none">
           <div class="content">{{ content }}</div>
-          <Button type="custom" class="lighting_dialong_wraper_content_btn" @click.stop="comfirm">{{ comfirmTxt }}</Button>
+          <Button type="custom" class="halo_dialong_wraper_content_btn" @click.stop="comfirm">{{ comfirmTxt }}</Button>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 import Button from "../../Button";
 import { defineComponent, computed, watchEffect, reactive, toRefs } from "vue";
 export default defineComponent({
-  name: "lighting-dialog",
+  name: "halo-dialog",
   props: {
     visible: {
       type: Boolean,
@@ -75,7 +75,7 @@ $radius: 4px;
 $red: red;
 $grey: grey;
 $white: #fff;
-.lighting_dialong_overlay {
+.halo_dialong_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -89,7 +89,7 @@ $white: #fff;
   justify-content: center;
   align-items: center;
 }
-.lighting_dialong_wraper {
+.halo_dialong_wraper {
   width: fit-content;
   height: auto;
   padding: 2px;
@@ -102,7 +102,7 @@ $white: #fff;
   transition: opacity linear .4s;
   max-width: 70%;
 
-  .lighting_dialong_wraper_content {
+  .halo_dialong_wraper_content {
     color: $white;
     width: 100%;
     height: 100%;

@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './lib/simple.scss'
+import './lib/halo.scss'
 import './index.css'
-// import lightingUi from "./utils/lightingUi"
-import lightingUi from "./lib"
+// import haloUi from "./utils/haloUi"
+import haloUi from "./lib"
 const app = createApp(App);
-// lightingUi(app);
-app.use(lightingUi).mount('#app')
+// haloUi(app);
+app.use(haloUi).mount('#app')

@@ -1,13 +1,13 @@
 <template>
-  <button class="lighting_button lighting_light_hover">
-    <div class="lighting_button_wraper" :class="theme"><slot /></div>
+  <button class="halo_button halo_hover">
+    <div class="halo_button_wraper" :class="theme"><slot /></div>
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 export default defineComponent({
-  name: "lighting-button",
+  name: "halo-button",
   props: {
     loading: Boolean,
     type: {
@@ -16,7 +16,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const theme = computed(() => [`lighting_button_${props.type}`]);
+    const theme = computed(() => [`halo_button_${props.type}`]);
     return {
       theme,
     };
@@ -32,7 +32,7 @@ $radius: 4px;
 $red: red;
 $grey: grey;
 $white: #fff;
-.lighting_button {
+.halo_button {
   padding: 0 16px;
   cursor: pointer;
   outline: none;
@@ -55,7 +55,7 @@ $white: #fff;
   &[disabled] {
     cursor: not-allowed;
     background-color: rgba($white, 0.3);
-    & > .lighting_button_wraper {
+    & > .halo_button_wraper {
       background-color: gray;
     }
     &:hover {
@@ -64,16 +64,16 @@ $white: #fff;
     }
   }
 }
-.lighting_button_normal {
+.halo_button_normal {
   height: $h;
   width: auto;
 }
-.lighting_button_custom {
+.halo_button_custom {
   height: 100%;
   width: 100%;
 }
 
-@keyframes lighting_spin {
+@keyframes halo_spin {
   0% {
     transform: rotate(0deg);
   }
