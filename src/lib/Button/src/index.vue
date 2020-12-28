@@ -1,11 +1,17 @@
 <template>
   <button class="halo_button halo_hover">
-    <div class="halo_button_wraper" :class="theme"><slot /></div>
+    <div class="halo_button_wraper" :class="theme">
+      <slot></slot>
+    </div>
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
+declare interface PropsTypes {
+  loading: Boolean;
+  type: String;
+}
 export default defineComponent({
   name: "halo-button",
   props: {
@@ -15,7 +21,7 @@ export default defineComponent({
       default: "normal",
     },
   },
-  setup(props) {
+  setup(props: PropsTypes) {
     const theme = computed(() => [`halo_button_${props.type}`]);
     return {
       theme,
@@ -27,9 +33,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 $h: 39px;
 $color: #333;
-$blue: #40a9ff;
-$radius: 4px;
-$red: red;
 $grey: grey;
 $white: #fff;
 .halo_button {

@@ -6,6 +6,7 @@ Aside.install = (app: App): void => {
   app.component(Aside.name, Aside)
 }
 
-const _Aside: ComponentInstall<typeof Aside> = Aside
+// const _Aside: ComponentInstall<typeof Aside> = Aside
 
-export default _Aside
+// export default _Aside
+export default Aside

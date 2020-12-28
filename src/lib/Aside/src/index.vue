@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="halo_aside halo_hover"
-    :class="{ halo_aside_close: !open }"
-  >
+  <div class="halo_aside halo_hover" :class="{ halo_aside_close: !open }">
     <div class="halo_aside_wraper halo_none">
       <div class="halo_aside_header">
         <slot name="header"></slot>
@@ -17,7 +14,8 @@
           type="custom"
           v-for="(item, index) in headerList"
           :key="index"
-          >{{ item.name }}</Button
+        >
+          {{ item.name }}</Button
         >
       </div>
       <div class="halo_aside_footer">
@@ -31,6 +29,14 @@
 <script lang="ts">
 import Button from "../../Button";
 import { defineComponent, computed, reactive, toRefs } from "vue";
+declare interface PropsTypes {
+  centralize: Boolean;
+  loading: Boolean;
+  headerList: Array<Object>;
+}
+declare interface DataTypes {
+  open: Boolean;
+}
 export default defineComponent({
   name: "halo-aside",
   props: {
@@ -38,28 +44,14 @@ export default defineComponent({
     loading: Boolean,
     headerList: {
       type: Array,
-      default: [
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-        { name: "haha", url: "/sadas" },
-      ],
+      default: [],
     },
   },
   components: {
     Button,
   },
-  setup(props, { emit }) {
-    const data = reactive({
+  setup(props: PropsTypes, { emit }) {
+    const data: DataTypes = reactive({
       open: false,
     });
     return {
@@ -73,16 +65,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 $h: 39px;
 $color: #333;
-$blue: #40a9ff;
-$radius: 4px;
-$red: red;
-$grey: grey;
-$white: #fff;
 .halo_aside {
   position: absolute;
   top: 0;
+  z-index: 999;
   padding-right: 2px;
-  transition: transform .9s;
+  transition: transform 0.9s;
   &_wraper {
     width: 220px;
     height: 100vh;

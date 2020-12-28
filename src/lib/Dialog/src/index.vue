@@ -1,10 +1,23 @@
 <template>
   <Teleport to="body">
-    <div class="halo_dialong_overlay" :class="{ 'show_dialog': visible }" @click.stop="emit('update:visible', false)">
-      <div class="halo_dialong_wraper halo_hover" :class="{ 'show_dialog_wraper': visible }" @click.stop>
+    <div
+      class="halo_dialong_overlay"
+      :class="{ show_dialog: visible }"
+      @click.stop="emit('update:visible', false)"
+    >
+      <div
+        class="halo_dialong_wraper halo_hover"
+        :class="{ show_dialog_wraper: visible }"
+        @click.stop
+      >
         <div class="halo_dialong_wraper_content halo_none">
           <div class="content">{{ content }}</div>
-          <Button type="custom" class="halo_dialong_wraper_content_btn" @click.stop="comfirm">{{ comfirmTxt }}</Button>
+          <Button
+            type="custom"
+            class="halo_dialong_wraper_content_btn"
+            @click.stop="comfirm"
+            >{{ comfirmTxt }}</Button
+          >
         </div>
       </div>
     </div>
@@ -15,65 +28,61 @@
 // import
 import Button from "../../Button";
 import { defineComponent, computed, watchEffect, reactive, toRefs } from "vue";
+declare interface PropsTypes {
+  visible: Boolean;
+  comfirm: Function;
+  content: String;
+  comfirmTxt: String;
+}
+declare interface DataTypes {
+  show: Boolean;
+}
 export default defineComponent({
   name: "halo-dialog",
   props: {
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     comfirm: {
       type: Function,
-      default: (e) => {
-      }
+      default: (e) => {},
     },
     content: {
       type: String,
-      default: ''
+      default: "",
     },
     comfirmTxt: {
       type: String,
-      default: '好的'
-    }
-    // centralize: Boolean,
-    // loading: Boolean,
-    // headerList: {
-    //   type: Array,
-    //   default: [],
-    // },
+      default: "好的",
+    },
   },
   components: {
     Button,
   },
-  setup(props, { emit }) {
-    const data = reactive({
-      show: false
+  setup(props: PropsTypes, { emit }) {
+    const data: DataTypes = reactive({
+      show: false,
     });
     watchEffect(() => {
-      data.show = props.visible
-    })
+      data.show = props.visible;
+    });
 
     const callDialog = () => {
-      data.show = true
-    }
+      data.show = true;
+    };
 
     return {
       ...toRefs(data),
       callDialog,
       emit,
-      // theme,
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
-$h: 39px;
 $color: #333;
-$blue: #40a9ff;
-$radius: 4px;
-$red: red;
-$grey: grey;
 $white: #fff;
 .halo_dialong_overlay {
   position: fixed;
@@ -84,7 +93,7 @@ $white: #fff;
   background: fade_out(black, 0.5);
   z-index: 10;
   visibility: hidden;
-  transition: visibility linear .4s;
+  transition: visibility linear 0.4s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,7 +108,7 @@ $white: #fff;
   background: transparent;
   // border-radius: 6px;
   opacity: 0;
-  transition: opacity linear .4s;
+  transition: opacity linear 0.4s;
   max-width: 70%;
 
   .halo_dialong_wraper_content {

@@ -7,6 +7,6 @@ Dialog.install = (app: App): void => {
   app.component(Dialog.name, Dialog)
 }
 
-const _Dialog: ComponentInstall<typeof Dialog> = Dialog
-
-export default _Dialog
+// const _Dialog: ComponentInstall<typeof Dialog> = Dialog
+// export default _Dialog
+export default Dialog

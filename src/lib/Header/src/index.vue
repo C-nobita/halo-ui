@@ -21,12 +21,18 @@
 // import
 import Button from "../../Button";
 import { defineComponent, computed } from "vue";
+declare interface PropsTypes {
+  type: String;
+  loading: Boolean;
+  headerList: Array<any>;
+}
+
 export default defineComponent({
   name: "halo-header",
   props: {
     type: {
       type: String,
-      default: ''
+      default: "",
     },
     loading: Boolean,
     headerList: {
@@ -37,8 +43,8 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup(props, { emit }) {
-    const theme = computed(() => [`halo_header_wraper_${props.type}`])
+  setup(props: PropsTypes, { emit }) {
+    const theme = computed(() => [`halo_header_wraper_${props.type}`]);
     return {
       emit,
       theme,
@@ -48,12 +54,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$h: 39px;
 $color: #333;
-$blue: #40a9ff;
-$radius: 4px;
-$red: red;
-$grey: grey;
 $white: #fff;
 .halo_header {
   color: $color;

@@ -1,23 +1,53 @@
 <template>
   <div class="relative" :style="`height: ${height}px; width: ${width}px`">
-    <div ref="dropdown" tabindex="0" class="halo_dropdown halo_hover" :class="theme">
     <div
-      class="halo_dropdown_wraper halo_none halo_hover"
-      :style="{ height: open ? `${openHeight}px` : void 0 }"
+      :ref="(dom) => getDropdownEl(dom)"
+      tabindex="0"
+      class="halo_dropdown halo_hover"
+      :class="theme"
     >
-      <div class="halo_dropdown_wraper_item">{{ value }}</div>
-      <div class="halo_dropdown_wraper_item" v-for="(item, index) in values" :key="index" @click="select(item)">
-        {{ item }}
+      <div
+        class="halo_dropdown_wraper halo_none halo_hover"
+        :style="{ height: open ? `${openHeight}px` : void 0 }"
+      >
+        <div class="halo_dropdown_wraper_item">{{ value || "请选择" }}</div>
+        <div
+          class="halo_dropdown_wraper_item"
+          v-for="(item, index) in values"
+          :key="index"
+          @click="select(item)"
+        >
+          {{ item }}
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
 <script lang="ts">
 // import
 import Button from "../../Button";
-import { defineComponent, computed, getCurrentInstance, onMounted, reactive, toRefs, watchEffect } from "vue";
+import {
+  defineComponent,
+  computed,
+  getCurrentInstance,
+  onMounted,
+  reactive,
+  toRefs,
+  watchEffect,
+} from "vue";
+declare interface PropsTypes {
+  type: String;
+  values: Array<any>;
+  selectValue: String;
+}
+declare interface DataTypes {
+  open: Boolean;
+  value: String;
+  width: Number;
+  height: Number;
+  dropdownEl: any;
+}
 export default defineComponent({
   name: "halo-dropdown",
   props: {
@@ -27,27 +57,29 @@ export default defineComponent({
     },
     values: {
       type: Array,
-      default: [""],
+      default: [],
     },
     selectValue: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   components: {
     Button,
   },
-  setup(props, { emit }) {
-    const ctx = getCurrentInstance();
-    const data = reactive({
+  setup(props: PropsTypes, { emit }) {
+    // const ctx = getCurrentInstance();
+    const data: DataTypes = reactive({
       open: false,
-      value: '',
+      value: "",
       width: 0,
       height: 0,
+      dropdownEl: null,
     });
+    const getDropdownEl = (dom) => (data.dropdownEl = dom);
     watchEffect(() => {
-      data.value = props.selectValue
-    })
+      data.value = props.selectValue;
+    });
     const theme = computed(() => [`halo_dropdown_${props.type}`]);
     const openHeight = computed(() => {
       const oneHeight = 39;
@@ -55,19 +87,19 @@ export default defineComponent({
       return height || oneHeight;
     });
     onMounted(() => {
-      ctx.refs.dropdown.onfocus = () => {
+      data.dropdownEl.onfocus = () => {
         data.open = true;
-      }
-      ctx.refs.dropdown.onblur = () => {
+      };
+      data.dropdownEl.onblur = () => {
         data.open = false;
-      }
-      data.width = ctx.refs.dropdown.offsetWidth
-      data.height = ctx.refs.dropdown.offsetHeight
+      };
+      data.width = data.dropdownEl.offsetWidth;
+      data.height = data.dropdownEl.offsetHeight;
     });
     const select = (item) => {
       if (data.open) {
-        ctx.refs.dropdown.blur();
-        emit("update:selectValue", item)
+        data.dropdownEl.blur();
+        emit("update:selectValue", item);
       }
     };
     return {
@@ -76,6 +108,7 @@ export default defineComponent({
       theme,
       openHeight,
       select,
+      getDropdownEl,
     };
   },
 });
@@ -84,10 +117,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 $h: 39px;
 $color: #333;
-$blue: #40a9ff;
-$radius: 4px;
-$red: red;
-$grey: grey;
 $white: #fff;
 .halo_dropdown {
   position: absolute;
