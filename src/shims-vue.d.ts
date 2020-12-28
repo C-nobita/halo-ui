@@ -1,6 +1,9 @@
 declare module '*.vue' {
-  import { ComponentOptions } from 'vue'
-  const componentOptions: ComponentOptions
+  import { ComponentOptions, App } from 'vue'
+  interface myComponentOpntions extends ComponentOptions {
+    install: (app: App) => void;
+  }
+  const componentOptions: myComponentOpntions
   export default componentOptions
 }
 

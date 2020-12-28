@@ -7,7 +7,6 @@ Dropdown.install = (app: App): void => {
   app.component(Dropdown.name, Dropdown)
 }
 
-// const _Dropdown: ComponentInstall<typeof Dropdown> = Dropdown
+const _Dropdown: ComponentInstall<typeof Dropdown> = Dropdown
 
-// export default _Dropdown
-export default Dropdown
+export default _Dropdown

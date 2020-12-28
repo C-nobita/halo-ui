@@ -27,7 +27,7 @@
 <script lang="ts">
 // import
 import Button from "../../Button";
-import { defineComponent, computed, watchEffect, reactive, toRefs } from "vue";
+import { defineComponent, watchEffect, reactive, toRefs, getCurrentInstance } from "vue";
 declare interface PropsTypes {
   visible: Boolean;
   comfirm: Function;
@@ -60,7 +60,8 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup(props: PropsTypes, { emit }) {
+  setup(props: PropsTypes) {
+    const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
       show: false,
     });

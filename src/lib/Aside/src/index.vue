@@ -28,12 +28,7 @@
 
 <script lang="ts">
 import Button from "../../Button";
-import { defineComponent, computed, reactive, toRefs } from "vue";
-declare interface PropsTypes {
-  centralize: Boolean;
-  loading: Boolean;
-  headerList: Array<Object>;
-}
+import { defineComponent, reactive, toRefs, getCurrentInstance } from "vue";
 declare interface DataTypes {
   open: Boolean;
 }
@@ -50,7 +45,8 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup(props: PropsTypes, { emit }) {
+  setup() {
+    const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
       open: false,
     });
@@ -89,7 +85,6 @@ $color: #333;
       }
       &_item:hover {
         padding: 2px 0;
-        // height: 35px;
       }
       &::-webkit-scrollbar {
         display: none;

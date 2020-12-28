@@ -20,7 +20,7 @@
 <script lang="ts">
 // import
 import Button from "../../Button";
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, getCurrentInstance } from "vue";
 declare interface PropsTypes {
   type: String;
   loading: Boolean;
@@ -43,7 +43,8 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup(props: PropsTypes, { emit }) {
+  setup(props: PropsTypes) {
+    const { emit } = getCurrentInstance();
     const theme = computed(() => [`halo_header_wraper_${props.type}`]);
     return {
       emit,

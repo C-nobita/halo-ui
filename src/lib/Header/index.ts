@@ -7,8 +7,7 @@ Header.install = (app: App): void => {
   app.component(Header.name, Header)
 }
 
-// const _Header: ComponentInstall<typeof Header> = Header
+const _Header: ComponentInstall<typeof Header> = Header
 
-// export default _Header
-export default Header
+export default _Header
 

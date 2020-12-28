@@ -67,8 +67,8 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup(props: PropsTypes, { emit }) {
-    // const ctx = getCurrentInstance();
+  setup(props: PropsTypes) {
+    const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
       open: false,
       value: "",
