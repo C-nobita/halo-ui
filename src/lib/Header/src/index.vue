@@ -21,11 +21,6 @@
 // import
 import Button from "../../Button";
 import { defineComponent, computed, getCurrentInstance } from "vue";
-declare interface PropsTypes {
-  type: String;
-  loading: Boolean;
-  headerList: Array<any>;
-}
 
 export default defineComponent({
   name: "halo-header",
@@ -37,13 +32,13 @@ export default defineComponent({
     loading: Boolean,
     headerList: {
       type: Array,
-      default: [],
+      default: () => [],
     },
   },
   components: {
     Button,
   },
-  setup(props: PropsTypes) {
+  setup(props) {
     const { emit } = getCurrentInstance();
     const theme = computed(() => [`halo_header_wraper_${props.type}`]);
     return {

@@ -1,15 +1,16 @@
-let prevNode;
+let prevNode: HTMLElement;
 export default function halo(r = 160) {
   document.addEventListener("mousemove", function (e) {
+    const target = e.target as HTMLElement;
     if (prevNode) {
-      (prevNode as HTMLElement).style.backgroundImage = "";
-      (prevNode as HTMLElement).classList.remove("hover_font");
+      prevNode.style.backgroundImage = "";
+      prevNode.classList.remove("hover_font");
     }
     const x = e.pageX;
     const y = e.pageY;
-    const tds = document.querySelectorAll(".halo_hover");
+    const tds = document.querySelectorAll(".halo_hover") as NodeListOf<HTMLElement>;
     for (let index = 0; index < tds.length; index++) {
-      const targetEle = (e.target as HTMLElement).getBoundingClientRect();
+      const targetEle = target.getBoundingClientRect();
       const element = tds[index].getBoundingClientRect();
       const L = element.x;
       const targetL = targetEle.x;
@@ -27,35 +28,37 @@ export default function halo(r = 160) {
         const yPx = y - T;
         const targetXpx = x - targetL;
         const targetYpx = y - targetT;
-        prevNode = e.target;
-        if ((e.target as HTMLElement).parentElement.classList.contains("halo_hover") && !(e.target as HTMLElement).classList.contains("halo_none")) {
-          (e.target as HTMLElement).style.backgroundImage = `radial-gradient(${r}px circle at ${targetXpx}px ${targetYpx}px, #f7f7f7, transparent)`;
-          (e.target as HTMLElement).classList.add("hover_font");
+        prevNode = target;
+        if (target.parentElement.classList.contains("halo_hover") && !target.classList.contains("halo_none")) {
+          target.style.backgroundImage = `radial-gradient(${r}px circle at ${targetXpx}px ${targetYpx}px, #f7f7f7, transparent)`;
+          target.classList.add("hover_font");
         } else {
-          (e.target as HTMLElement).style.backgroundImage = "";
-          (e.target as HTMLElement).classList.remove("hover_font");
+          target.style.backgroundImage = "";
+          target.classList.remove("hover_font");
         }
-        if (!(tds[index] as HTMLElement).classList.contains("halo_none")) {
-          (tds[index] as HTMLElement).style.backgroundImage = `radial-gradient(${r}px circle at ${xPx}px ${yPx}px, #f7f7f7, transparent)`;
+        if (!tds[index].classList.contains("halo_none")) {
+          tds[index].style.backgroundImage = `radial-gradient(${r}px circle at ${xPx}px ${yPx}px, #f7f7f7, transparent)`;
         } else {
-          (tds[index] as HTMLElement).style.backgroundImage = "";
+          tds[index].style.backgroundImage = "";
         }
         continue;
       }
-      if (((tds[index] as HTMLElement).firstChild as HTMLElement).style)
-      ((tds[index] as HTMLElement).firstChild as HTMLElement).style.backgroundImage = "";
+      const firstChild = tds[index].firstElementChild as HTMLElement;
+      if (firstChild && firstChild.style) {
+        firstChild.style.backgroundImage = "";
+      }
       // outside
       if (YT > 0 || XL > 0 || YB < 0 || XR < 0) {
-        (tds[index] as HTMLElement).style.backgroundImage = "";
+        tds[index].style.backgroundImage = "";
       } else {
         // around
         const xPx = x - L;
         const yPx = y - T;
         const pos = r;
-        if ((tds[index] as HTMLElement).classList.contains("halo_none")) {
-          (tds[index] as HTMLElement).style.backgroundImage = "";
+        if (tds[index].classList.contains("halo_none")) {
+          tds[index].style.backgroundImage = "";
         } else {
-          (tds[index] as HTMLElement).style.backgroundImage = `radial-gradient(${pos}px circle at ${xPx}px ${yPx}px, #f7f7f7, transparent)`;
+          tds[index].style.backgroundImage = `radial-gradient(${pos}px circle at ${xPx}px ${yPx}px, #f7f7f7, transparent)`;
         }
       }
     }

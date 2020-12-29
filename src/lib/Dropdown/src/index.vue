@@ -36,17 +36,12 @@ import {
   toRefs,
   watchEffect,
 } from "vue";
-declare interface PropsTypes {
-  type: String;
-  values: Array<any>;
-  selectValue: String;
-}
 declare interface DataTypes {
   open: Boolean;
   value: String;
   width: Number;
   height: Number;
-  dropdownEl: any;
+  dropdownEl: HTMLElement;
 }
 export default defineComponent({
   name: "halo-dropdown",
@@ -67,7 +62,7 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup(props: PropsTypes) {
+  setup(props) {
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
       open: false,
