@@ -25,7 +25,6 @@
 </template>
 
 <script lang="ts">
-// import
 import Button from "../../Button";
 import {
   defineComponent,
@@ -138,7 +137,6 @@ $white: #fff;
   }
 }
 .halo_dropdown_normal {
-  // height: $h;
   width: fit-content;
 }
 .halo_dropdown_custom {

@@ -25,7 +25,6 @@
 </template>
 
 <script lang="ts">
-// import
 import Button from "../../Button";
 import { defineComponent, watchEffect, reactive, toRefs, getCurrentInstance } from "vue";
 declare interface PropsTypes {
@@ -46,7 +45,7 @@ export default defineComponent({
     },
     comfirm: {
       type: Function,
-      default: (e) => {},
+      default: () => {},
     },
     content: {
       type: String,
@@ -107,11 +106,9 @@ $white: #fff;
   justify-content: center;
   align-items: center;
   background: transparent;
-  // border-radius: 6px;
   opacity: 0;
   transition: opacity linear 0.4s;
   max-width: 70%;
-
   .halo_dialong_wraper_content {
     color: $white;
     width: 100%;
