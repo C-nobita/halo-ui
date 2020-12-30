@@ -1,4 +1,4 @@
-[class^="hgalo-"], [class*="hgalo-"] {
+[class^="halo-"], [class*="halo-"] {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,3 +9,8 @@
     "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
     SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
 }
+
+$h: 39px;
+$color: #333;
+$grey: grey;
+$white: #fff;

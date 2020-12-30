@@ -82,8 +82,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$color: #333;
-$white: #fff;
+@import "../../halo.scss";
 .halo_dialong_overlay {
   position: fixed;
   top: 0;
@@ -91,7 +90,7 @@ $white: #fff;
   width: 100%;
   height: 100%;
   background: fade_out(black, 0.5);
-  z-index: 10;
+  z-index: 99999;
   visibility: hidden;
   transition: visibility linear 0.4s;
   display: flex;

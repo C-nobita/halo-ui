@@ -31,10 +31,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$h: 39px;
-$color: #333;
-$grey: grey;
-$white: #fff;
+@import "../../halo.scss";
 .halo_button {
   padding: 0 16px;
   cursor: pointer;

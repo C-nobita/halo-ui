@@ -59,8 +59,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$h: 39px;
-$color: #333;
+@import "../../halo.scss";
 .halo_aside {
   position: absolute;
   top: 0;

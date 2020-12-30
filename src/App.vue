@@ -12,7 +12,7 @@
         }
       "
     />
-    <halo-aside>
+    <halo-aside :headerList="[{ name: '123' }, { name: '123' }, { name: '123' }]">
       <template #header>12</template>
       <template #footer>12</template>
     </halo-aside>

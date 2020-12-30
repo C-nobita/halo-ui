@@ -109,9 +109,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$h: 39px;
-$color: #333;
-$white: #fff;
+@import "../../halo.scss";
 .halo_dropdown {
   position: absolute;
   background-color: rgba($white, 0.3);

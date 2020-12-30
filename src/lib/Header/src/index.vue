@@ -50,8 +50,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$color: #333;
-$white: #fff;
+@import "../../halo.scss";
 .halo_header {
   color: $color;
   width: 100%;
