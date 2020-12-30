@@ -1,47 +1,70 @@
 <template>
   <div class="app">
-    <halo-header :headerList="[1231231, 123123, 123]" @itemClick="test" />
-    <halo-button disabled>这是被禁用的按钮</halo-button
-    ><halo-button @click="visible = true">这是可用的按钮</halo-button>
+    <halo-header :headerList="header" @itemClick="itemClickHandler"></halo-header>
+    <halo-aside :openVlaue="openVlaue" :asideList="asideList" @itemClick="itemClickHandler"></halo-aside>
+    <router-view />
     <halo-dialog
-      v-model:visible="visible"
+      v-model:visible="dialogVisible"
       content="欢迎使用 halo-ui ! 这是自己学习中搭建的ui框架，第一次尝试难免有许多问题，如有问题欢迎提 issue 反馈，期待你的 follow 和 star！ : )"
       :comfirm="
         () => {
-          visible = false;
+          dialogVisible = false;
         }
       "
-    />
-    <halo-aside :headerList="[{ name: '123' }, { name: '123' }, { name: '123' }]">
-      <template #header>12</template>
-      <template #footer>12</template>
-    </halo-aside>
-    <halo-dropdown
-      v-model:selectValue="selectValue"
-      :values="['!@#', '!23', '22sf', 'sdasd']"
-      >dsdasd</halo-dropdown
-    >
+    ></halo-dialog>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, getCurrentInstance } from "vue";
+import { reactive, toRefs, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
 export default {
   name: "App",
-  components: {},
   setup() {
-    const ins = getCurrentInstance();
-    const visible = ref(false);
-    const test = (a) => {
-      console.log(a);
-      // ins.$callDialog();
-      console.log(ins);
+    const data = reactive({
+      header: [
+        {
+          name: "首页",
+          path: "/"
+        },
+        {
+          name: "组件",
+          path: "/doc",
+          openAside: true,
+        },
+      ],
+      asideList: [
+        {
+          name: "前言",
+          path: "/doc",
+          openAside: true,
+        },
+        {
+          name: "安装",
+          path: "/doc/install",
+          openAside: true,
+        },
+      ],
+      dialogVisible: false,
+      openVlaue: false,
+    });
+    const router = useRouter();
+    onMounted(() => {
+      setTimeout(() => {
+        data.dialogVisible = false;
+      });
+    });
+    const itemClickHandler = (params) => {
+      console.log("Header Item Click! => ", params);
+      if (params.path) {
+        router.push(params.path);
+      }
+      data.openVlaue = params.openAside;
     };
-    const selectValue = ref("");
     return {
-      visible,
-      test,
-      selectValue,
+      ...toRefs(data),
+      itemClickHandler,
     };
   },
 };
@@ -50,8 +73,10 @@ export default {
 <style lang="scss">
 @import "./index.scss";
 .app {
-  background: "/wallhaven-ym1wp7";
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 .hover_font {
   color: lightslategray !important;

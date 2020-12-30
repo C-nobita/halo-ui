@@ -1,7 +1,7 @@
 <template>
   <div class="halo_header halo_hover">
     <div class="halo_header_wraper halo_none" :class="theme">
-      <div class="halo_header_wraper_left">123</div>
+      <div class="halo_header_wraper_left"><slot name="left"></slot></div>
       <div class="halo_header_wraper_content" :class="theme">
         <Button
           @click="emit('itemClick', item)"
@@ -9,7 +9,7 @@
           class="halo_header_wraper_content_item"
           v-for="(item, index) in headerList"
           :key="index"
-          >{{ item }}</Button
+          >{{ item.name }}</Button
         >
         <slot name="right"></slot>
       </div>
@@ -55,7 +55,7 @@ export default defineComponent({
   color: $color;
   width: 100%;
   height: 60px;
-  background-color: rgba($white, 0.3);
+  background-color: $color;
   box-sizing: border-box;
   overflow: hidden;
   transition: all linear 0.6s;

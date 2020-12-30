@@ -9,10 +9,10 @@
         :class="{ halo_aside_wraper_content_close: !open }"
       >
         <Button
-          @click="open = false"
+          @click="emit('itemClick', item)"
           class="halo_aside_wraper_content_item"
           type="custom"
-          v-for="(item, index) in headerList"
+          v-for="(item, index) in asideList"
           :key="index"
         >
           {{ item.name }}</Button
@@ -28,16 +28,18 @@
 
 <script lang="ts">
 import Button from "../../Button";
-import { defineComponent, reactive, toRefs, getCurrentInstance } from "vue";
+import { defineComponent, reactive, toRefs, getCurrentInstance, watchEffect } from "vue";
 declare interface DataTypes {
   open: Boolean;
 }
 export default defineComponent({
   name: "halo-aside",
   props: {
-    centralize: Boolean,
-    loading: Boolean,
-    headerList: {
+    openVlaue: {
+      type: Boolean,
+      default: () => false,
+    },
+    asideList: {
       type: Array,
       default: [],
     },
@@ -45,10 +47,13 @@ export default defineComponent({
   components: {
     Button,
   },
-  setup() {
+  setup(props) {
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
       open: false,
+    });
+    watchEffect(() => {
+      data.open = props.openVlaue;
     });
     return {
       ...toRefs(data),
