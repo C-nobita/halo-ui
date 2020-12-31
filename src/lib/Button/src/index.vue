@@ -9,20 +9,26 @@
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 declare interface PropsTypes {
-  loading: Boolean;
   type: String;
+  hoverLight: Boolean;
 }
 export default defineComponent({
   name: "halo-button",
   props: {
-    loading: Boolean,
     type: {
       type: String,
       default: "normal",
     },
+    hoverLight: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props: PropsTypes) {
-    const theme = computed(() => [`halo_button_${props.type}`]);
+    const theme = computed(() => [
+      `halo_button_${props.type}`,
+      props.hoverLight ? "" : "halo_none",
+    ]);
     return {
       theme,
     };

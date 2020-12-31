@@ -1,5 +1,9 @@
 <template>
-  <div class="halo_header halo_hover">
+  <div
+    :ref="(dom) => (headerDom = dom)"
+    class="halo_header halo_hover"
+    :class="wraperTheme"
+  >
     <div class="halo_header_wraper halo_none" :class="theme">
       <div class="halo_header_wraper_left"><slot name="left"></slot></div>
       <div class="halo_header_wraper_content" :class="theme">
@@ -20,7 +24,7 @@
 <script lang="ts">
 // import
 import Button from "../../Button";
-import { defineComponent, computed, getCurrentInstance } from "vue";
+import { defineComponent, computed, getCurrentInstance, ref, nextTick } from "vue";
 
 export default defineComponent({
   name: "halo-header",
@@ -29,10 +33,17 @@ export default defineComponent({
       type: String,
       default: "",
     },
-    loading: Boolean,
     headerList: {
       type: Array,
       default: () => [],
+    },
+    alwaysTop: {
+      type: Boolean,
+      default: false,
+    },
+    scrollHide: {
+      type: Boolean,
+      default: false,
     },
   },
   components: {
@@ -41,9 +52,53 @@ export default defineComponent({
   setup(props) {
     const { emit } = getCurrentInstance();
     const theme = computed(() => [`halo_header_wraper_${props.type}`]);
+    const addHeaderHideClass = ref(false);
+    const wraperTheme = computed(() => [
+      props.alwaysTop ? "halo_header_always_top" : "",
+      addHeaderHideClass.value ? "halo_header_scroll_hide" : "",
+    ]);
+    const headerDom = ref(null);
+    const onTop = ref(true);
+
+    nextTick(() => {
+      const { top, height } = headerDom.value.getBoundingClientRect();
+      const scrollHandler = () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop > top + height - 10) {
+          onTop.value = false;
+          addHeaderHideClass.value = true;
+        } else {
+          onTop.value = true;
+          addHeaderHideClass.value = false;
+        }
+      };
+      const moveHandler = (e) => {
+        if (onTop.value) return;
+        const { clientY } = e;
+        if (addHeaderHideClass.value) {
+          if (clientY == top) {
+            addHeaderHideClass.value = false;
+          } else {
+            addHeaderHideClass.value = true;
+          }
+        } else {
+          if (clientY <= top + height) {
+            addHeaderHideClass.value = false;
+          } else {
+            addHeaderHideClass.value = true;
+          }
+        }
+      };
+      if (props.scrollHide) {
+        document.addEventListener("scroll", scrollHandler);
+        document.addEventListener("mousemove", moveHandler);
+      }
+    });
     return {
       emit,
       theme,
+      wraperTheme,
+      headerDom,
     };
   },
 });
@@ -87,6 +142,14 @@ export default defineComponent({
   }
   &_wraper_between {
     justify-content: space-between;
+  }
+  &_always_top {
+    position: sticky;
+    z-index: 99999;
+    top: 0;
+  }
+  &_scroll_hide {
+    transform: translateY(-100%);
   }
 }
 </style>

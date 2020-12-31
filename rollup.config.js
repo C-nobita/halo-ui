@@ -5,6 +5,7 @@ import scss from 'rollup-plugin-scss'
 import dartSass from 'sass';
 import { terser } from "rollup-plugin-terser"
 import dts from "rollup-plugin-dts";
+import image from 'rollup-plugin-img';
 
 export default [
   {
@@ -24,6 +25,9 @@ export default [
       plugins: [terser()]
     }],
     plugins: [
+      image({
+        limit: 10000
+      }),
       scss({ include: /\.scss$/, sass: dartSass }),
       typescript({
         tsconfigOverride: {

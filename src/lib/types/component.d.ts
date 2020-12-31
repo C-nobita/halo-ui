@@ -1,6 +1,6 @@
 import { App } from 'vue';
 
-export class VanComponent {
+export class HaloComponent {
   static name: string;
 
   static install: (app: App) => any;

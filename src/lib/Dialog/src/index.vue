@@ -15,8 +15,8 @@
           <Button
             type="custom"
             class="halo_dialong_wraper_content_btn"
-            @click.stop="comfirm"
-            >{{ comfirmTxt }}</Button
+            @click.stop="confirm"
+            >{{ confirmTxt }}</Button
           >
         </div>
       </div>
@@ -29,9 +29,9 @@ import Button from "../../Button";
 import { defineComponent, watchEffect, reactive, toRefs, getCurrentInstance } from "vue";
 declare interface PropsTypes {
   visible: Boolean;
-  comfirm: Function;
+  confirm: Function;
   content: String;
-  comfirmTxt: String;
+  confirmTxt: String;
 }
 declare interface DataTypes {
   show: Boolean;
@@ -43,7 +43,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    comfirm: {
+    confirm: {
       type: Function,
       default: () => {},
     },
@@ -51,7 +51,7 @@ export default defineComponent({
       type: String,
       default: "",
     },
-    comfirmTxt: {
+    confirmTxt: {
       type: String,
       default: "好的",
     },

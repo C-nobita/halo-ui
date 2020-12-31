@@ -77,7 +77,7 @@ export default defineComponent({
     const theme = computed(() => [`halo_dropdown_${props.type}`]);
     const openHeight = computed(() => {
       const oneHeight = 39;
-      const height = oneHeight * props.values.length;
+      const height = oneHeight * (props.values.length + 1);
       return height || oneHeight;
     });
     onMounted(() => {

@@ -2254,6 +2254,13 @@ rollup-plugin-esbuild@^2.5.0:
     joycon "^2.2.5"
     strip-json-comments "^3.1.1"
 
+rollup-plugin-img@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-img/-/rollup-plugin-img-1.1.0.tgz#17ec10045f6c234a7a59ff1e2d46af4524dd3ffb"
+  integrity sha512-44JyY0wBQFNjM2pB7Yv1uUwMW4S1bjdnzLmUPShrDeACSMvn798i9ttwiBkfls+QjSY0qLrNqMacUTDX93Q0MA==
+  dependencies:
+    rollup-pluginutils "^2.0.1"
+
 rollup-plugin-node-resolve@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-5.2.0.tgz#730f93d10ed202473b1fb54a5997a7db8c6d8523"
@@ -2317,7 +2324,7 @@ rollup-plugin-web-worker-loader@^1.3.1:
   resolved "https://registry.yarnpkg.com/rollup-plugin-web-worker-loader/-/rollup-plugin-web-worker-loader-1.5.0.tgz#df21973426c6f95b238a84698ae27f8d8aab6b83"
   integrity sha512-Zx5l370yGDje35rFkM/wbT4dMIq2+kSBdLWQpqLkBuxmrQJcx0umA05kSbNRzccFsudQH4FKYCK8GtSBQRQBBg==
 
-rollup-pluginutils@2, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
+rollup-pluginutils@2, rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==

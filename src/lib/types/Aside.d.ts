@@ -1,6 +1,6 @@
 
-import { VanComponent } from './component';
+import { HaloComponent } from './component';
 
-export class Aside extends VanComponent {
+export class Aside extends HaloComponent {
   reset(code?: string): void;
 }

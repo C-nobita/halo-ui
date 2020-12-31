@@ -7,13 +7,15 @@ import Header from "./Header"
 import Dialog from "./Dialog"
 import Aside from "./Aside"
 import Dropdown from "./Dropdown"
+import Table from "./Table"
 
 const components = [
   Button,
   Header,
   Dialog,
   Aside,
-  Dropdown
+  Dropdown,
+  Table
 ]
 
 
@@ -28,7 +30,8 @@ export {
   Button,
   Header,
   Dialog,
-  Aside
+  Aside,
+  Table
 }
 
 export default {

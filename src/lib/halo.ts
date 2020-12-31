@@ -6,8 +6,8 @@ export default function halo(r = 160) {
       prevNode.style.backgroundImage = "";
       prevNode.classList.remove("hover_font");
     }
-    const x = e.pageX;
-    const y = e.pageY;
+    const x = e.clientX;
+    const y = e.clientY;
     const tds = document.querySelectorAll(".halo_hover") as NodeListOf<HTMLElement>;
     for (let index = 0; index < tds.length; index++) {
       const targetEle = target.getBoundingClientRect();
@@ -29,7 +29,7 @@ export default function halo(r = 160) {
         const targetXpx = x - targetL;
         const targetYpx = y - targetT;
         prevNode = target;
-        if (target.parentElement.classList.contains("halo_hover") && !target.classList.contains("halo_none")) {
+        if (target.parentElement && target.classList && target.parentElement.classList.contains("halo_hover") && !target.classList.contains("halo_none")) {
           target.style.backgroundImage = `radial-gradient(${r}px circle at ${targetXpx}px ${targetYpx}px, #f7f7f7, transparent)`;
           target.classList.add("hover_font");
         } else {

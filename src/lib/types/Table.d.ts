@@ -1,6 +1,6 @@
 
 import { HaloComponent } from './component';
 
-export class Button extends HaloComponent {
+export class Table extends HaloComponent {
   reset(code?: string): void;
 }

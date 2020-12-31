@@ -1,6 +1,6 @@
 <template>
   <div class="halo_aside halo_hover" :class="{ halo_aside_close: !open }">
-    <div class="halo_aside_wraper halo_none">
+    <div class="halo_aside_wraper halo_none" :class="theme">
       <div class="halo_aside_header">
         <slot name="header"></slot>
       </div>
@@ -21,14 +21,26 @@
       <div class="halo_aside_footer">
         <slot name="footer"></slot>
       </div>
-      <Button type="custom" class="operator" @click="open = !open">icon</Button>
+      <Button type="custom" :hoverLight="false" class="operator" @click="open = !open">
+        <slot name="menu">
+          <img class="operator_icon" :src="imgSrc" alt="" />
+        </slot>
+      </Button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Button from "../../Button";
-import { defineComponent, reactive, toRefs, getCurrentInstance, watchEffect } from "vue";
+import img from "../../../assets/aside.png";
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  getCurrentInstance,
+  watchEffect,
+  computed,
+} from "vue";
 declare interface DataTypes {
   open: Boolean;
 }
@@ -43,6 +55,10 @@ export default defineComponent({
       type: Array,
       default: [],
     },
+    type: {
+      type: String,
+      default: "",
+    },
   },
   components: {
     Button,
@@ -51,13 +67,16 @@ export default defineComponent({
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
       open: false,
+      imgSrc: img,
     });
+    const theme = computed(() => [props.type ? `halo_aside_theme_${props.type}` : ""]);
     watchEffect(() => {
       data.open = props.openVlaue;
     });
     return {
       ...toRefs(data),
       emit,
+      theme,
     };
   },
 });
@@ -66,7 +85,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../../halo.scss";
 .halo_aside {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 999;
   padding-right: 2px;
@@ -103,6 +122,10 @@ export default defineComponent({
       bottom: 60px;
       padding-left: 0;
       background-color: $color;
+      display: flex;
+      &_icon {
+        width: 20px;
+      }
     }
   }
   &_header,
@@ -111,10 +134,19 @@ export default defineComponent({
     height: 200px;
     display: flex;
     justify-content: center;
+    max-height: 25%;
     align-items: center;
+  }
+  &_theme_custom {
+    height: 100%;
+    width: 100%;
   }
 }
 .halo_aside_close {
   transform: translateX(-100%);
+}
+.icon {
+  width: 20px;
+  height: 20px;
 }
 </style>
