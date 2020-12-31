@@ -28,4 +28,4 @@ import "halo-ui/dist/halo-ui.css";
     createApp(App).use(Button).use(Dialog).mount("#app");
 ```
 
-下一节：[开始使用](#/start)
+下一节：[开始使用](#/doc/aside)

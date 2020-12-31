@@ -9,6 +9,7 @@
       class="demo_aside"
       @itemClick="clickHandler"
     />
+    <div> {{ "<== 点击左侧的小按钮打开 aside 组件" }} </div>
   </div>
 </template>
 
@@ -37,7 +38,11 @@ export default defineComponent({
   position: relative;
   height: 300px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &_aside {
+    left: 0;
     position: absolute !important;
     width: 200px !important;
     height: 100%;
