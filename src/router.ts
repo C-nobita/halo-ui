@@ -1,16 +1,17 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 import Home from "./views/Home.vue";
-import Doc from "./views/Doc.vue";
 import Layout from "./components/Layout.vue"
-// import SwitchDemo from "./components/SwitchDemo.vue";
-// import ButtonDemo from "./components/ButtonDemo.vue";
-// import DialogDemo from "./components/DialogDemo.vue";
-// import TabsDemo from "./components/TabsDemo.vue";
+import AsideDemo from "./views/AsideDemo.vue"
+import ButtonDemo from "./views/ButtonDemo.vue";
+import DialogDemo from "./views/DialogDemo.vue";
+import DropdownDemo from "./views/DropdownDemo.vue";
+import HeaderDemo from "./views/HeaderDemo.vue";
+import TableDemo from "./views/TableDemo.vue";
+
 
 import { h } from 'vue';
 import Markdown from './components/markdown.vue';
 import intro from './markdown/intro.md'
-// import getStarted from './markdown/get-started.md'
 import install from './markdown/install.md'
 const history = createWebHashHistory();
 const md = string => h(Markdown, { content: string, key: string })
@@ -36,6 +37,29 @@ export const router = createRouter({
           component: md(install)
         },
         {
+          path: "aside",
+          component: AsideDemo
+        },
+        {
+          path: "button",
+          component: ButtonDemo
+        },
+        {
+          path: "dialog",
+          component: DialogDemo
+        },
+        {
+          path: "dropdown",
+          component: DropdownDemo
+        },
+        {
+          path: "header",
+          component: HeaderDemo
+        }, {
+          path: "table",
+          component: TableDemo
+        },
+        {
           path: ":catchAll(.*)",
           redirect: "/"
         }
@@ -47,5 +71,8 @@ export const router = createRouter({
     }
   ],
 });
-router.afterEach(() => {
-});
+// router.beforeEach((to, from , next) => {
+//   if ()
+//   console.log(to, from, "!!");
+//   next();
+// });

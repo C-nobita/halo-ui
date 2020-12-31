@@ -25,7 +25,7 @@ import "halo-ui/dist/halo-ui.css";
 import "halo-ui/dist/halo-ui.css";
     import { Button, Dialog } from "halo-ui";
 
-    createApp(App).use(Button)..use(Dialog).mount("#app");
+    createApp(App).use(Button).use(Dialog).mount("#app");
 ```
 
 下一节：[开始使用](#/start)

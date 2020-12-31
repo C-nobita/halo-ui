@@ -6,4 +6,6 @@ Halo UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 
 如果你想使用我的组件库，那么用来写自己的博客或者自己的项目就好啦！仓库源码在 [GitHub](https://github.com/C-nobita/halo-ui). 期待你的 star ! : )
 
-下一节：[安装](#/install)
+当然了，目前的组件还是比较少，后续也会继续更新完善，达到一个自己满意的标准。
+
+下一节：[安装](#/doc/install)
