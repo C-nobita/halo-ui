@@ -124,7 +124,7 @@ export default {
   box-sizing: border-box;
 }
 .hover_font {
-  color: whitesmoke !important;
+  color: black !important;
   // font-weight: 900 !important;
 }
 </style>
