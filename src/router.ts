@@ -7,6 +7,7 @@ import DialogDemo from "./views/DialogDemo.vue";
 import DropdownDemo from "./views/DropdownDemo.vue";
 import HeaderDemo from "./views/HeaderDemo.vue";
 import TableDemo from "./views/TableDemo.vue";
+import CustomDemo from "./views/CustomDemo.vue";
 
 
 import { h } from 'vue';
@@ -21,8 +22,6 @@ export const router = createRouter({
     {
       path: "/",
       component: Home,
-      // children: [
-      // ]
     },
     {
       path: "/doc",
@@ -55,9 +54,14 @@ export const router = createRouter({
         {
           path: "header",
           component: HeaderDemo
-        }, {
+        },
+        {
           path: "table",
           component: TableDemo
+        },
+        {
+          path: "custom",
+          component: CustomDemo
         },
         {
           path: ":catchAll(.*)",
@@ -71,8 +75,3 @@ export const router = createRouter({
     }
   ],
 });
-// router.beforeEach((to, from , next) => {
-//   if ()
-//   console.log(to, from, "!!");
-//   next();
-// });

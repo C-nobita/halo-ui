@@ -85,6 +85,11 @@ export default {
           path: "/doc/table",
           openAside: true,
         },
+        {
+          name: "自定义",
+          path: "/doc/custom",
+          openAside: true,
+        }
       ],
       dialogVisible: false,
       openVlaue: false,
@@ -117,6 +122,9 @@ export default {
 
 <style lang="scss">
 @import "./index.scss";
+body {
+  min-height: 100vh;
+}
 .app {
   height: 100%;
   display: flex;
