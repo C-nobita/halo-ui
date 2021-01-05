@@ -4,6 +4,12 @@
       <div class="halo_table_wraper_header halo_hover">
         <div
           class="halo_table_wraper_header_item halo_none"
+          v-if="!tableData.header.length"
+        >
+          暂无数据
+        </div>
+        <div
+          class="halo_table_wraper_header_item halo_none"
           v-for="(item, index) in tableData.header"
           :key="index"
         >
@@ -12,6 +18,9 @@
       </div>
 
       <div class="halo_table_wraper_body">
+        <div class="halo_table_wraper_body_line halo_hover" v-if="!tableData.data.length">
+          暂无数据
+        </div>
         <div
           class="halo_table_wraper_body_line halo_hover"
           v-for="(item, index) in tableData.data"
