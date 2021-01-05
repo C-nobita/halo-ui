@@ -8,6 +8,7 @@ import Dialog from "./Dialog"
 import Aside from "./Aside"
 import Dropdown from "./Dropdown"
 import Table from "./Table"
+import Carousel from "./Carousel"
 
 const components = [
   Button,
@@ -15,7 +16,8 @@ const components = [
   Dialog,
   Aside,
   Dropdown,
-  Table
+  Table,
+  Carousel
 ]
 
 
@@ -31,7 +33,8 @@ export {
   Header,
   Dialog,
   Aside,
-  Table
+  Table,
+  Carousel
 }
 
 export default {
