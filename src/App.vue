@@ -87,7 +87,8 @@ export default {
         },
         {
           name: "Carousel组件",
-          path: "/doc/carousel"
+          path: "/doc/carousel",
+          openAside: true,
         },
         {
           name: "自定义",

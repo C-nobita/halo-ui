@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, reactive } from "vue";
 export default defineComponent({
   setup() {
-    const list = ref([
+    const list = reactive([
       { type: "text", text: "123" },
       {
         type: "image",
@@ -20,7 +20,7 @@ export default defineComponent({
       },
       { type: "text", text: "789" },
     ]);
-    const backgrounds = ref(["#123", "#456", "#789"]);
+    const backgrounds = reactive(["#123", "#456", "#789"]);
     return {
       list,
       backgrounds,
