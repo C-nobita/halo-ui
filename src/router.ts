@@ -8,6 +8,7 @@ import DropdownDemo from "./views/DropdownDemo.vue";
 import HeaderDemo from "./views/HeaderDemo.vue";
 import TableDemo from "./views/TableDemo.vue";
 import CustomDemo from "./views/CustomDemo.vue";
+import CarouselDemo from "./views/CarouselDemo.vue"
 
 
 import { h } from 'vue';
@@ -58,6 +59,10 @@ export const router = createRouter({
         {
           path: "table",
           component: TableDemo
+        },
+        {
+          path: "carousel",
+          component: CarouselDemo
         },
         {
           path: "custom",

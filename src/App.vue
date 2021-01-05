@@ -86,6 +86,10 @@ export default {
           openAside: true,
         },
         {
+          name: "Carousel组件",
+          path: "/doc/carousel"
+        },
+        {
           name: "自定义",
           path: "/doc/custom",
           openAside: true,
