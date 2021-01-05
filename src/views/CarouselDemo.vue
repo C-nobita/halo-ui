@@ -50,7 +50,7 @@ export default defineComponent({
       },
       {
         prop: "duration",
-        desc: "轮播间隔时间 / 为 (0|null|''|undefined|false) 则不会开启轮播",
+        desc: "轮播间隔时间 / 为 0 则不会开启轮播",
         default: "3000",
         require: "false",
       },
