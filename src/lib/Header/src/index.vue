@@ -49,6 +49,7 @@ export default defineComponent({
   components: {
     Button,
   },
+  emits: ['itemClick'],
   setup(props) {
     const { emit } = getCurrentInstance();
     const theme = computed(() => [`halo_header_wraper_${props.type}`]);

@@ -61,6 +61,7 @@ export default defineComponent({
   components: {
     Button,
   },
+  emits: ['update:selectValue'],
   setup(props) {
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({

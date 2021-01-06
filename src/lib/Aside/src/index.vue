@@ -63,6 +63,7 @@ export default defineComponent({
   components: {
     Button,
   },
+  emits: ['itemClick'],
   setup(props) {
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({

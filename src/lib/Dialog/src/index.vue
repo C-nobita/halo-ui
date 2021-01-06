@@ -59,6 +59,7 @@ export default defineComponent({
   components: {
     Button,
   },
+  emits: ['update:visible'],
   setup(props: PropsTypes) {
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({

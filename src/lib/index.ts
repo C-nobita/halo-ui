@@ -9,6 +9,7 @@ import Aside from "./Aside"
 import Dropdown from "./Dropdown"
 import Table from "./Table"
 import Carousel from "./Carousel"
+import DatePicker from "./DatePicker"
 
 const components = [
   Button,
@@ -17,7 +18,8 @@ const components = [
   Aside,
   Dropdown,
   Table,
-  Carousel
+  Carousel,
+  DatePicker
 ]
 
 
@@ -34,7 +36,8 @@ export {
   Dialog,
   Aside,
   Table,
-  Carousel
+  Carousel,
+  DatePicker
 }
 
 export default {
