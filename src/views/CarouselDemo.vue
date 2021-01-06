@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -47,24 +51,28 @@ export default defineComponent({
         desc: "是否开启循环",
         default: "true",
         require: "false",
+        type: "Boolean",
       },
       {
         prop: "duration",
         desc: "轮播间隔时间 / 为 0 则不会开启轮播",
         default: "3000",
         require: "false",
+        type: "Number",
       },
       {
         prop: "itemList",
         desc: "轮播项，可以是图片也可以是文字",
-        default: "carouselObj[ ]",
+        default: "[ ]",
         require: "true",
+        type: "carouselObj[ ]",
       },
       {
         prop: "itemBackgrounds",
         desc: "轮播项的背景颜色，长度不需要和轮播项一致",
-        default: "color[ ]",
+        default: "[ ]",
         require: "false",
+        type: "string[ ]",
       },
     ]);
     const slotTableHeader = ref([
@@ -115,7 +123,7 @@ export default defineComponent({
       slotTableHeader,
       slotTableData,
       typesTableHeader,
-      typesTableData
+      typesTableData,
     };
   },
 });

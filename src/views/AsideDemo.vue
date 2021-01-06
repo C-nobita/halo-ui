@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -44,6 +48,7 @@ export default defineComponent({
     const propsTableData = ref([
       {
         prop: "openVlaue",
+        type: "Boolean",
         desc: "是否打开",
         default: "false",
         require: "false",
@@ -51,11 +56,13 @@ export default defineComponent({
       {
         prop: "asideList",
         desc: "列表",
-        default: "asideObj[ ]",
+        type: "asideObj[ ]",
+        default: "[ ]",
         require: "true",
       },
       {
         prop: "type",
+        type: "String",
         desc: "组件类型/为 custom 自定义样式",
         default: "/",
         require: "false",
@@ -98,11 +105,16 @@ export default defineComponent({
         key: "params",
         name: "参数",
       },
+      {
+        key: "paramsType",
+        name: "参数类型",
+      },
     ]);
     const eventTableData = ref([
       {
         event: "itemClick",
         params: "asideObj",
+        paramsType: "asideObj",
         desc: "点击 aside 组件每一项触发的事件",
       },
     ]);

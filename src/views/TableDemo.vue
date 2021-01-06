@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -45,14 +49,16 @@ export default defineComponent({
       {
         prop: "header",
         desc: "标题列表",
-        default: "tableHedaerObj[ ]",
+        default: "[ ]",
         require: "true",
+        type: "tableHedaerObj[ ]",
       },
       {
         prop: "data",
         desc: "表体列表",
-        default: "tableBodyObj[ ]",
+        default: "[ ]",
         require: "true",
+        type: "tableBodyObj[ ]",
       },
     ]);
 

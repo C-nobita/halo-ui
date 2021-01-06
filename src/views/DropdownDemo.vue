@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -47,18 +51,21 @@ export default defineComponent({
         desc: "选择展开的数组",
         default: "[ ]",
         require: "true",
+        type: "string[ ]",
       },
       {
         prop: "selectValue",
         desc: "选择的值",
         default: "",
         require: "true",
+        type: "String",
       },
       {
         prop: "type",
         desc: "组件类型/为 custom 自定义样式",
-        default: "/",
+        default: "",
         require: "false",
+        type: "String",
       },
     ]);
 

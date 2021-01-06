@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -47,24 +51,28 @@ export default defineComponent({
         desc: "是否吸顶",
         default: "false",
         require: "false",
+        type: "Boolean",
       },
       {
         prop: "scrollHide",
         desc: "下拉触发吸顶后鼠标不移入则隐藏",
         default: "false",
         require: "false",
+        type: "Boolean",
       },
       {
         prop: "headerList",
         desc: "列表",
-        default: "headerObj[ ]",
+        default: "[ ]",
         require: "true",
+        type: "headerObj[ ]",
       },
       {
         prop: "type",
         desc: "组件类型/为 custom 自定义样式",
-        default: "/",
+        default: "",
         require: "false",
+        type: "String",
       },
     ]);
     const slotTableHeader = ref([
@@ -100,11 +108,16 @@ export default defineComponent({
         key: "params",
         name: "参数",
       },
+      {
+        key: "paramsType",
+        name: "参数类型",
+      },
     ]);
     const eventTableData = ref([
       {
         event: "itemClick",
         params: "headerObj",
+        paramsType: "headerObj",
         desc: "点击 header 组件每一项触发的事件",
       },
     ]);

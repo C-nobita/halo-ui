@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -47,24 +51,28 @@ export default defineComponent({
         desc: "显示dialog",
         default: "false",
         require: "false",
+        type: "Boolean",
       },
       {
         prop: "confirm",
         desc: "点击dialog的确认按钮",
         default: "() => void",
         require: "false",
+        type: "Function",
       },
       {
         prop: "content",
         desc: "dialog的提示内容",
         default: "",
         require: "false",
+        type: "String",
       },
       {
         prop: "confirmTxt",
         desc: "确认按钮的文案",
         default: "好的",
         require: "false",
+        type: "String",
       },
     ]);
 

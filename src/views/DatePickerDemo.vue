@@ -51,7 +51,7 @@ export default defineComponent({
         desc: "初始值",
         default: "new Date()",
         require: "false",
-        type: 'Date'
+        type: "Date",
       },
     ]);
     const eventTableHeader = ref([
@@ -69,25 +69,24 @@ export default defineComponent({
       },
       {
         key: "paramsType",
-        name: "参数类型"
-      }
+        name: "参数类型",
+      },
     ]);
     const eventTableData = ref([
       {
         event: "picked",
         params: "date",
         paramsType: "Date",
-        desc: "选中的 Date 对象",
+        desc: "选中日期时触发的事件",
       },
     ]);
-
 
     return {
       DatePicker,
       propsTableHeader,
       propsTableData,
       eventTableHeader,
-      eventTableData
+      eventTableData,
     };
   },
 });

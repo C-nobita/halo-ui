@@ -29,6 +29,10 @@ export default defineComponent({
         name: "prop",
       },
       {
+        key: "type",
+        name: "参数类型",
+      },
+      {
         key: "desc",
         name: "描述",
       },
@@ -47,12 +51,14 @@ export default defineComponent({
         desc: "鼠标移上是否有hover效果",
         default: "true",
         require: "false",
+        type: "Boolean",
       },
       {
         prop: "type",
         desc: "组件类型/为 custom 自定义样式",
         default: "/",
         require: "false",
+        type: "String",
       },
     ]);
     const slotTableHeader = ref([
@@ -84,6 +90,10 @@ export default defineComponent({
         key: "params",
         name: "参数",
       },
+      {
+        key: "paramsType",
+        name: "参数类型",
+      },
     ]);
     const eventTableData = ref([
       {
@@ -93,7 +103,8 @@ export default defineComponent({
       },
       {
         event: "/",
-        params: "e: Event",
+        params: "e",
+        paramsType: "Event",
         desc: "与原生 button 一致",
       },
     ]);
