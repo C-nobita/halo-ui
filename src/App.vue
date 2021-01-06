@@ -91,6 +91,11 @@ export default {
           openAside: true,
         },
         {
+          name: "DatePicker组件",
+          path: "/doc/datepicker",
+          openAside: true,
+        },
+        {
           name: "自定义",
           path: "/doc/custom",
           openAside: true,
