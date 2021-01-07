@@ -63,7 +63,7 @@ export default defineComponent({
   components: {
     Button,
   },
-  emits: ['itemClick'],
+  emits: ["itemClick"],
   setup(props) {
     const { emit } = getCurrentInstance();
     const data: DataTypes = reactive({
@@ -111,7 +111,25 @@ export default defineComponent({
         padding: 2px 0;
       }
       &::-webkit-scrollbar {
-        display: none;
+        width: 6px;
+        border-radius: 3px;
+        background-color: #f5f5f5;
+      }
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #f5f5f5;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.44, #123),
+          color-stop(0.72, #456),
+          color-stop(0.86, #789)
+        );
       }
     }
     &_content_close {
