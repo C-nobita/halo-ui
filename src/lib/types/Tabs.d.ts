@@ -1,5 +1,5 @@
 
 import { HaloComponent } from './component';
 
-export class Header extends HaloComponent {
+export class Tabs extends HaloComponent {
 }

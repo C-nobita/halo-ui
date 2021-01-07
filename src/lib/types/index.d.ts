@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { App } from 'vue';
+import { App } from 'vue'
 // import { HaloComponent } from './component';
 import { Aside } from "./Aside"
 import { Button } from "./Button"
@@ -7,11 +7,14 @@ import { Dialog } from "./Dialog"
 import { Dropdown } from "./Dropdown"
 import { Header } from "./Header"
 import { Table } from "./Table"
+import { Carousel } from "./Carousel"
+import { DatePicker } from "./DatePicker"
+import { Tabs } from "./Tabs"
 
 
 // export const version: string;
 
-export const install: (app: App) => any;
+export const install: (app: App) => any
 
 // export class Aside extends HaloComponent { }
 // export class Button extends HaloComponent { }
@@ -27,4 +30,7 @@ export {
   Dropdown,
   Header,
   Table,
-};
+  Carousel,
+  DatePicker,
+  Tabs
+}
