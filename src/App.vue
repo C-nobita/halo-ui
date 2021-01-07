@@ -96,6 +96,11 @@ export default {
           openAside: true,
         },
         {
+          name: "Tabs组件",
+          path: "/doc/tabs",
+          openAside: true,
+        },
+        {
           name: "自定义",
           path: "/doc/custom",
           openAside: true,

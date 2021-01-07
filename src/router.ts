@@ -9,7 +9,8 @@ import HeaderDemo from "./views/HeaderDemo.vue";
 import TableDemo from "./views/TableDemo.vue";
 import CustomDemo from "./views/CustomDemo.vue";
 import CarouselDemo from "./views/CarouselDemo.vue";
-import DatePickerDemo from "./views/DatePickerDemo.vue"
+import DatePickerDemo from "./views/DatePickerDemo.vue";
+import TabsDemo from "./views/TabsDemo.vue";
 
 
 import { h } from 'vue';
@@ -68,6 +69,10 @@ export const router = createRouter({
         {
           path: "datepicker",
           component: DatePickerDemo
+        },
+        {
+          path: "tabs",
+          component: TabsDemo
         },
         {
           path: "custom",
