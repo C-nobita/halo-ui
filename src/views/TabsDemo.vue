@@ -8,9 +8,11 @@
     <h3>Slots</h3>
     暂无
     <h3>Events</h3>
-    暂无
+    <halo-table :header="eventsTableHeader" :data="eventsTableData"></halo-table>
     <h3>types</h3>
     <halo-table :header="typesTableHeader" :data="typesTableData"></halo-table>
+    <h3>TabsItem 子组件 Props</h3>
+    <halo-table :header="propsTableHeader" :data="TabsPropsTableData"></halo-table>
   </div>
 </template>
 
@@ -47,18 +49,37 @@ export default defineComponent({
     ]);
     const propsTableData = ref([
       {
-        prop: "header",
-        desc: "标题列表",
-        default: "[ ]",
+        prop: "tab",
+        desc: "当前对应 tab 页的lable",
+        default: "",
         require: "true",
-        type: "tableHedaerObj[ ]",
+        type: "Number | String",
+      },
+    ]);
+    const eventsTableHeader = ref([
+      {
+        key: "event",
+        name: "事件",
       },
       {
-        prop: "data",
-        desc: "表体列表",
-        default: "[ ]",
-        require: "true",
-        type: "tableBodyObj[ ]",
+        key: "desc",
+        name: "描述",
+      },
+      {
+        key: "params",
+        name: "参数",
+      },
+      {
+        key: "paramsType",
+        name: "参数类型",
+      },
+    ]);
+    const eventsTableData = ref([
+      {
+        event: "change",
+        params: "item",
+        paramsType: "tabObj",
+        desc: "tab 发生切换时触发的事件",
       },
     ]);
 
@@ -78,22 +99,36 @@ export default defineComponent({
     ]);
     const typesTableData = ref([
       {
-        interface: "tableHedaerObj",
-        desc: "table 组件表头每一项的数据结构 每一项有且只有一个 key",
-        type: "{ key: string; name: string; }",
-      },
-      {
-        interface: "tableBodyObj",
-        desc: "table 组件表体每一项的数据结构 / key与表头key对应",
-        type: "{ [key: string]: string; }",
+        interface: "tabObj",
+        desc: "每个 tab 的参数对象",
+        type: "{ lable: String | Number; name: String | Number; [name?: string]: any }",
       },
     ]);
+    const TabsPropsTableData = ref([
+      {
+        prop: "lable",
+        desc: "每个 tab 页对应的 lable 与父组件 tab props对应",
+        default: "",
+        require: "true",
+        type: "Number | String",
+      },
+      {
+        prop: "name",
+        desc: "每个 tab 页对应的标题",
+        default: "",
+        require: "true",
+        type: "Number | String",
+      },
+    ])
     return {
       TabsDemo,
       propsTableHeader,
       propsTableData,
+      eventsTableHeader,
+      eventsTableData,
       typesTableHeader,
       typesTableData,
+      TabsPropsTableData
     };
   },
 });
