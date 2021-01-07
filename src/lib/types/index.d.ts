@@ -10,6 +10,7 @@ import { Table } from "./Table"
 import { Carousel } from "./Carousel"
 import { DatePicker } from "./DatePicker"
 import { Tabs } from "./Tabs"
+import { TabsItem } from "./TabsItem"
 
 
 // export const version: string;
@@ -32,5 +33,6 @@ export {
   Table,
   Carousel,
   DatePicker,
-  Tabs
+  Tabs,
+  TabsItem
 }
