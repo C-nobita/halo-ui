@@ -12,6 +12,7 @@ import Carousel from "./Carousel"
 import DatePicker from "./DatePicker"
 import Tabs from "./Tabs"
 import TabsItem from "./TabsItem"
+import Switch from "./Switch"
 
 const components = [
   Button,
@@ -23,7 +24,8 @@ const components = [
   Carousel,
   DatePicker,
   Tabs,
-  TabsItem
+  TabsItem,
+  Switch
 ]
 
 
@@ -43,7 +45,8 @@ export {
   Carousel,
   DatePicker,
   Tabs,
-  TabsItem
+  TabsItem,
+  Switch
 }
 
 export default {
