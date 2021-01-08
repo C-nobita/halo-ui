@@ -32,7 +32,7 @@ import "halo-ui/dist/halo-ui.css";
 如果你要自定义光晕大小，你可以这么做。
 ```js
 window.haloRadius = 120;
-import "halo-ui/dist/halo-ui.css";
+    import "halo-ui/dist/halo-ui.css";
     import HaloUi from "halo-ui";
 
     createApp(App).use(HaloUi).mount("#app");
