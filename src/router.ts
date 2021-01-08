@@ -11,6 +11,7 @@ import CustomDemo from "./views/CustomDemo.vue";
 import CarouselDemo from "./views/CarouselDemo.vue";
 import DatePickerDemo from "./views/DatePickerDemo.vue";
 import TabsDemo from "./views/TabsDemo.vue";
+import SwitchDemo from "./views/SwitchDemo.vue";
 
 
 import { h } from 'vue';
@@ -73,6 +74,10 @@ export const router = createRouter({
         {
           path: "tabs",
           component: TabsDemo
+        },
+        {
+          path: "switch",
+          component: SwitchDemo
         },
         {
           path: "custom",

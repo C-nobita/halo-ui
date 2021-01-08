@@ -101,6 +101,11 @@ export default {
           openAside: true,
         },
         {
+          name: "Switch组件",
+          path: "/doc/switch",
+          openAside: true,
+        },
+        {
           name: "自定义",
           path: "/doc/custom",
           openAside: true,
