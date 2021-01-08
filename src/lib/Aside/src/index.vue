@@ -7,9 +7,10 @@
       <div
         class="halo_aside_wraper_content halo_hover"
         :class="{ halo_aside_wraper_content_close: !open }"
+        :ref="(dom) => (wraperEl = dom)"
       >
         <Button
-          @click="emit('itemClick', item)"
+          @click="itemClick(item, index)"
           class="halo_aside_wraper_content_item"
           type="custom"
           v-for="(item, index) in asideList"
@@ -40,6 +41,7 @@ import {
   getCurrentInstance,
   watchEffect,
   computed,
+  ref,
 } from "vue";
 declare interface DataTypes {
   open: Boolean;
@@ -74,10 +76,23 @@ export default defineComponent({
     watchEffect(() => {
       data.open = props.openVlaue;
     });
+    const wraperEl = ref(null);
+    const itemClick = (item, index) => {
+      emit("itemClick", item);
+      wraperEl.value.scrollTo({
+        left: 0,
+        top:
+          (wraperEl.value.offsetHeight / props.asideList.length) * (index + 2) -
+          wraperEl.value.offsetHeight / 2,
+        behavior: "smooth",
+      });
+    };
     return {
       ...toRefs(data),
       emit,
       theme,
+      itemClick,
+      wraperEl,
     };
   },
 });
