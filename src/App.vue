@@ -5,7 +5,9 @@
       scrollHide
       :headerList="header"
       @itemClick="itemClickHandler"
-    ></halo-header>
+    >
+      <template #right><span style="font-size: 12px; margin-left: 16px;">version: {{ version }}</span></template>
+    </halo-header>
     <halo-aside
       :openVlaue="openVlaue"
       :asideList="asideList"
@@ -27,6 +29,7 @@
 <script lang="ts">
 import { reactive, toRefs, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import pack from "../package";
 
 export default {
   name: "App",
@@ -113,6 +116,7 @@ export default {
       ],
       dialogVisible: false,
       openVlaue: false,
+      version: pack.version
     });
     const router = useRouter();
     const route = useRoute();
