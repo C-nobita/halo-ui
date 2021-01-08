@@ -1,5 +1,5 @@
 let prevNode: HTMLElement;
-export default function halo(r = 160) {
+export default function halo(r = 100) {
   document.addEventListener("mousemove", function (e) {
     const target = e.target as HTMLElement;
     if (prevNode) {

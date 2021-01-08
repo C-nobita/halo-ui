@@ -1,6 +1,11 @@
+declare global {
+  interface Window {
+    haloRadius?: number
+  }
+}
 import { App } from 'vue'
 import halo from "./halo"
-halo();
+halo(window.haloRadius)
 
 import Button from "./Button"
 import Header from "./Header"
