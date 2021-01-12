@@ -12,7 +12,7 @@ import { DatePicker } from "./DatePicker"
 import { Tabs } from "./Tabs"
 import { TabsItem } from "./TabsItem"
 import { Switch } from "./Switch"
-
+import { Loading } from "./Loading"
 
 // export const version: string;
 
@@ -36,5 +36,6 @@ export {
   DatePicker,
   Tabs,
   TabsItem,
-  Switch
+  Switch,
+  Loading
 }
