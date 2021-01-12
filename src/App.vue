@@ -1,12 +1,11 @@
 <template>
   <div class="app">
-    <halo-header
-      alwaysTop
-      scrollHide
-      :headerList="header"
-      @itemClick="itemClickHandler"
-    >
-      <template #right><span style="font-size: 12px; margin-left: 16px;">version: {{ version }}</span></template>
+    <halo-header alwaysTop scrollHide :headerList="header" @itemClick="itemClickHandler">
+      <template #right
+        ><span style="font-size: 12px; margin-left: 16px"
+          >version: {{ version }}</span
+        ></template
+      >
     </halo-header>
     <halo-aside
       :openVlaue="openVlaue"
@@ -30,7 +29,65 @@
 import { reactive, toRefs, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import pack from "../package";
-
+const asideArr = [
+  {
+    name: "Aside组件",
+    path: "/doc/aside",
+    openAside: true,
+  },
+  {
+    name: "Button组件",
+    path: "/doc/button",
+    openAside: true,
+  },
+  {
+    name: "Dialog组件",
+    path: "/doc/dialog",
+    openAside: true,
+  },
+  {
+    name: "Dropdown组件",
+    path: "/doc/dropdown",
+    openAside: true,
+  },
+  {
+    name: "Header组件",
+    path: "/doc/header",
+    openAside: true,
+  },
+  {
+    name: "Table组件",
+    path: "/doc/table",
+    openAside: true,
+  },
+  {
+    name: "Carousel组件",
+    path: "/doc/carousel",
+    openAside: true,
+  },
+  {
+    name: "DatePicker组件",
+    path: "/doc/datepicker",
+    openAside: true,
+  },
+  {
+    name: "Tabs组件",
+    path: "/doc/tabs",
+    openAside: true,
+  },
+  {
+    name: "Switch组件",
+    path: "/doc/switch",
+    openAside: true,
+  },
+  {
+    name: "Loading组件",
+    path: "/doc/loading",
+    openAside: true,
+  },
+].sort((a, b) => {
+  return a.name[0] <= b.name[0] ? -1 : 1;
+});
 export default {
   name: "App",
   setup() {
@@ -59,69 +116,15 @@ export default {
           openAside: true,
         },
         {
-          name: "Aside组件",
-          path: "/doc/aside",
-          openAside: true,
-        },
-        {
-          name: "Button组件",
-          path: "/doc/button",
-          openAside: true,
-        },
-        {
-          name: "Dialog组件",
-          path: "/doc/dialog",
-          openAside: true,
-        },
-        {
-          name: "Dropdown组件",
-          path: "/doc/dropdown",
-          openAside: true,
-        },
-        {
-          name: "Header组件",
-          path: "/doc/header",
-          openAside: true,
-        },
-        {
-          name: "Table组件",
-          path: "/doc/table",
-          openAside: true,
-        },
-        {
-          name: "Carousel组件",
-          path: "/doc/carousel",
-          openAside: true,
-        },
-        {
-          name: "DatePicker组件",
-          path: "/doc/datepicker",
-          openAside: true,
-        },
-        {
-          name: "Tabs组件",
-          path: "/doc/tabs",
-          openAside: true,
-        },
-        {
-          name: "Switch组件",
-          path: "/doc/switch",
-          openAside: true,
-        },
-        {
-          name: "Loading组件",
-          path: "/doc/loading",
-          openAside: true,
-        },
-        {
           name: "自定义",
           path: "/doc/custom",
           openAside: true,
-        }
+        },
+        ...asideArr,
       ],
       dialogVisible: false,
       openVlaue: false,
-      version: pack.version
+      version: pack.version,
     });
     const router = useRouter();
     const route = useRoute();
