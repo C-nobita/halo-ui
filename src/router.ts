@@ -12,6 +12,7 @@ import CarouselDemo from "./views/CarouselDemo.vue";
 import DatePickerDemo from "./views/DatePickerDemo.vue";
 import TabsDemo from "./views/TabsDemo.vue";
 import SwitchDemo from "./views/SwitchDemo.vue";
+import LoadingDemo from "./views/LoadingDemo.vue"
 
 
 import { h } from 'vue';
@@ -82,6 +83,10 @@ export const router = createRouter({
         {
           path: "custom",
           component: CustomDemo
+        },
+        {
+          path: "loading",
+          component: LoadingDemo
         },
         {
           path: ":catchAll(.*)",

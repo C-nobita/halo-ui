@@ -109,6 +109,11 @@ export default {
           openAside: true,
         },
         {
+          name: "Loading组件",
+          path: "/doc/loading",
+          openAside: true,
+        },
+        {
           name: "自定义",
           path: "/doc/custom",
           openAside: true,
