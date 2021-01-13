@@ -8,10 +8,9 @@
       v-model:value="value"
       @change="changeHandler"
     >
-      <span>lable: aa /</span>
-      <halo-radio :lable="'aa'" :text="'test1'" @checked="checkedHandler"></halo-radio>
-      <span>lable: bb /</span>
-      <halo-radio :lable="'bb'" :text="'test2'"></halo-radio>
+      <halo-radio :lable="'aa'" @checked="checkedHandler">{{ 'aa' }}</halo-radio>
+
+      <halo-radio :lable="'bb'" disabled>{{ 'bb(disabled)' }}</halo-radio>
     </halo-radio-group>
     <div>lable: <input type="text" v-model="value" /></div>
   </div>

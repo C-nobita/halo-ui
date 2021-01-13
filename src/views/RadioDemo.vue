@@ -6,20 +6,20 @@
     <h3>Props</h3>
     <halo-table :header="propsTableHeader" :data="propsTableData"></halo-table>
     <h3>Slots</h3>
-    暂无
+    <halo-table :header="slotTableHeader" :data="slotTableData"></halo-table>
     <h3>Events</h3>
     <halo-table :header="eventTableHeader" :data="eventTableData"></halo-table>
     <h3>types</h3>
-    <halo-table :header="typesTableHeader" :data="typesTableData"></halo-table>
+    暂无
     <h2>RadioGroup 组件</h2>
     <h3>Props</h3>
     <halo-table :header="propsTableHeader" :data="secPropsTableData"></halo-table>
     <h3>Slots</h3>
-    暂无
+    <halo-table :header="slotTableHeader" :data="secSlotTableData"></halo-table>
     <h3>Events</h3>
     <halo-table :header="eventTableHeader" :data="secEventTableData"></halo-table>
     <h3>types</h3>
-    同上
+    暂无
   </div>
 </template>
 
@@ -63,11 +63,33 @@ export default defineComponent({
         require: "true",
       },
       {
-        prop: "text",
-        desc: "单选框选中的文字描述",
-        type: "String | Number",
-        default: "",
-        require: "true",
+        prop: "disabled",
+        desc: "是否禁用单选框",
+        type: "Boolean",
+        default: "false",
+        require: "false",
+      },
+    ]);
+    const slotTableHeader = ref([
+      {
+        key: "slot",
+        name: "插槽",
+      },
+      {
+        key: "desc",
+        name: "描述",
+      },
+    ]);
+    const slotTableData = ref([
+      {
+        slot: "default",
+        desc: "单选框对应的文字描述",
+      },
+    ]);
+    const secSlotTableData = ref([
+      {
+        slot: "default",
+        desc: "Radio 组件的容器",
       },
     ]);
     const eventTableHeader = ref([
@@ -91,30 +113,9 @@ export default defineComponent({
     const eventTableData = ref([
       {
         event: "checked",
-        params: "radioObj",
-        paramsType: "radioObj",
-        desc: "每一项的 radio 包含的 lable 于 text 的对象",
-      },
-    ]);
-    const typesTableHeader = ref([
-      {
-        key: "interface",
-        name: "类型名称",
-      },
-      {
-        key: "desc",
-        name: "描述",
-      },
-      {
-        key: "type",
-        name: "类型结构",
-      },
-    ]);
-    const typesTableData = ref([
-      {
-        interface: "radioObj",
-        desc: "每一项的 radio 包含的 lable 于 text 的对象",
-        type: "{ lable: string | number; text: string | number; }",
+        params: "lable",
+        paramsType: "lable",
+        desc: "每一项的 radio 对应的 lable",
       },
     ]);
     const secPropsTableData = ref([
@@ -129,9 +130,9 @@ export default defineComponent({
     const secEventTableData = ref([
       {
         event: "change",
-        params: "radioObj",
-        paramsType: "radioObj",
-        desc: "每一项的 radio 包含的 lable 于 text 的对象",
+        params: "lable",
+        paramsType: "lable",
+        desc: "每一项的 radio 对应的 lable",
       },
     ])
     return {
@@ -140,10 +141,11 @@ export default defineComponent({
       RadioDemo,
       eventTableHeader,
       eventTableData,
-      typesTableHeader,
-      typesTableData,
       secPropsTableData,
-      secEventTableData
+      secEventTableData,
+      slotTableHeader,
+      slotTableData,
+      secSlotTableData
     };
   },
 });
