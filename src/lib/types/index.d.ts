@@ -13,6 +13,8 @@ import { Tabs } from "./Tabs"
 import { TabsItem } from "./TabsItem"
 import { Switch } from "./Switch"
 import { Loading } from "./Loading"
+import { Radio } from "./Radio"
+import { RadioGroup } from "./RadioGroup"
 
 // export const version: string;
 
@@ -37,5 +39,7 @@ export {
   Tabs,
   TabsItem,
   Switch,
-  Loading
+  Loading,
+  Radio,
+  RadioGroup
 }

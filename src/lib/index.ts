@@ -19,6 +19,8 @@ import Tabs from "./Tabs"
 import TabsItem from "./TabsItem"
 import Switch from "./Switch"
 import Loading from "./Loading"
+import Radio from "./Radio"
+import RadioGroup from "./RadioGroup"
 
 const components = [
   Button,
@@ -32,7 +34,9 @@ const components = [
   Tabs,
   TabsItem,
   Switch,
-  Loading
+  Loading,
+  Radio,
+  RadioGroup
 ]
 
 
@@ -54,7 +58,9 @@ export {
   Tabs,
   TabsItem,
   Switch,
-  Loading
+  Loading,
+  Radio,
+  RadioGroup
 }
 
 export default {
