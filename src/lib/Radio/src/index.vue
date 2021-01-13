@@ -26,9 +26,12 @@ export default defineComponent({
     lable: [String, Number],
     text: [String, Number],
   },
+  emits: ["checked"],
   setup(props) {
     const defaultValue = inject("defaultValue");
     const ckecked = ref(false);
+    const ctx = getCurrentInstance();
+    const parent = ctx.parent;
     watchEffect(() => {
       if (defaultValue.value == props.lable) {
         ckecked.value = true;
@@ -40,11 +43,10 @@ export default defineComponent({
         if (val) {
           parent.emit && parent.emit("update:value", props.lable);
           parent.emit && parent.emit("change", { lable: props.lable, text: props.text });
+          ctx.emit("checked", { lable: props.lable, text: props.text });
         }
       }
     );
-    const ctx = getCurrentInstance();
-    const parent = ctx.parent;
     return {
       ckecked,
     };
