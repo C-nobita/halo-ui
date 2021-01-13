@@ -1,12 +1,12 @@
 <template>
-  <div class="halo_radio" @click="ckecked = true">
+  <div class="halo_radio" @click="checkHandler">
     <input :checked="ckecked" :disabled="disabled" class="original_el" type="radio" />
     <div class="halo_radio_check_container halo_hover">
       <div class="halo_radio_check_container_content halo_none">
         <div class="halo_radio_check_container_content_check"></div>
       </div>
     </div>
-    <div class="halo_radio_lable">{{ text }}</div>
+    <div class="halo_radio_lable"><slot></slot></div>
   </div>
 </template>
 
@@ -24,7 +24,6 @@ export default defineComponent({
   props: {
     disabled: Boolean,
     lable: [String, Number],
-    text: [String, Number],
   },
   emits: ["checked"],
   setup(props) {
@@ -42,13 +41,18 @@ export default defineComponent({
       (val) => {
         if (val) {
           parent.emit && parent.emit("update:value", props.lable);
-          parent.emit && parent.emit("change", { lable: props.lable, text: props.text });
-          ctx.emit("checked", { lable: props.lable, text: props.text });
+          parent.emit && parent.emit("change", props.lable);
+          ctx.emit("checked", props.lable);
         }
       }
     );
+    const checkHandler = () => {
+      if (props.disabled) return;
+      ckecked.value = true;
+    };
     return {
       ckecked,
+      checkHandler,
     };
   },
 });
