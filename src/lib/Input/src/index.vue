@@ -13,7 +13,7 @@
       />
       <span
         v-if="showPassword && inputType === 'password'"
-        v-show="innerValue.length"
+        v-show="innerValue"
         class="iconfont halo_input_wraper_icon"
         v-html="icon"
         @click="innerType = innerType === inputType ? 'text' : inputType"
