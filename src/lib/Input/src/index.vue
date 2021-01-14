@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, getCurrentInstance } from "vue";
+import { defineComponent, computed, ref, getCurrentInstance, watchEffect } from "vue";
 export default defineComponent({
   name: "halo-input",
   props: {
@@ -56,7 +56,10 @@ export default defineComponent({
   emits: ["update:value"],
   setup(props) {
     const { emit } = getCurrentInstance();
-    const innerValue = ref(props.value);
+    const innerValue = ref('');
+    watchEffect(() => {
+      innerValue.value = props.value
+    })
     const innerType = ref(props.inputType);
     const icon = computed(() => (innerType.value === "text" ? "&#xe71c;" : "&#xe718;"));
     const theme = computed(() => [`halo_input_wraper_${props.type}`]);
