@@ -24,7 +24,7 @@
       </div>
       <Button type="custom" :hoverLight="false" class="operator" @click="open = !open">
         <slot name="menu">
-          <img class="operator_icon" :src="imgSrc" alt="" />
+          <span class="iconfont">&#xe7f2;</span>
         </slot>
       </Button>
     </div>
@@ -33,19 +33,7 @@
 
 <script lang="ts">
 import Button from "../../Button";
-import img from "../../../assets/aside.png";
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  getCurrentInstance,
-  watchEffect,
-  computed,
-  ref,
-} from "vue";
-declare interface DataTypes {
-  open: Boolean;
-}
+import { defineComponent, getCurrentInstance, watchEffect, computed, ref } from "vue";
 export default defineComponent({
   name: "halo-aside",
   props: {
@@ -68,13 +56,10 @@ export default defineComponent({
   emits: ["itemClick"],
   setup(props) {
     const { emit } = getCurrentInstance();
-    const data: DataTypes = reactive({
-      open: false,
-      imgSrc: img,
-    });
+    const open = ref(false);
     const theme = computed(() => [props.type ? `halo_aside_theme_${props.type}` : ""]);
     watchEffect(() => {
-      data.open = props.openVlaue;
+      open.value = props.openVlaue;
     });
     const wraperEl = ref(null);
     const itemClick = (item, index) => {
@@ -88,7 +73,7 @@ export default defineComponent({
       });
     };
     return {
-      ...toRefs(data),
+      open,
       emit,
       theme,
       itemClick,

@@ -20,15 +20,15 @@
         <div class="halo_datepicker_content_picker_content halo_none">
           <div class="picker_header">
             <div class="oprator">
-              <div @click="changeRange('del', 'year')">⬅</div>
-              <div @click="changeRange('del', 'month')">&lt;</div>
+              <span class="iconfont oprator_icon" @click="changeRange('del', 'year')">&#xe641;</span>
+              <span class="iconfont oprator_icon" @click="changeRange('del', 'month')">&#xe640;</span>
             </div>
             <div class="date_range">
               {{ `${currentDate.getFullYear()} - ${currentDate.getMonth() + 1}` }}
             </div>
             <div class="oprator">
-              <div @click="changeRange('add', 'month')">&gt;</div>
-              <div style="transform: scale(-1)" @click="changeRange('add', 'year')">⬅</div>
+              <span class="iconfont oprator_icon" @click="changeRange('add', 'month')">&#xe63e;</span>
+              <span class="iconfont oprator_icon" @click="changeRange('add', 'year')">&#xe642;</span>
             </div>
           </div>
           <div class="week">
@@ -207,9 +207,7 @@ export default defineComponent({
             display: flex;
             justify-content: space-around;
             align-items: center;
-            & > div {
-              cursor: pointer;
-            }
+            cursor: pointer;
           }
         }
         .week {
