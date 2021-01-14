@@ -22,10 +22,13 @@
       <div class="halo_aside_footer">
         <slot name="footer"></slot>
       </div>
-      <Button type="custom" :hoverLight="false" class="operator iconfont" @click="open = !open">
-        <slot name="menu">
-          &#xe7f2;
-        </slot>
+      <Button
+        type="custom"
+        :hoverLight="false"
+        class="operator iconfont"
+        @click="open = !open"
+      >
+        <slot name="menu"> &#xe7f2; </slot>
       </Button>
     </div>
   </div>
@@ -67,7 +70,7 @@ export default defineComponent({
       wraperEl.value.scrollTo({
         left: 0,
         top:
-          (wraperEl.value.offsetHeight / props.asideList.length) * (index + 2) -
+          (wraperEl.value.scrollHeight / props.asideList.length) * index -
           wraperEl.value.offsetHeight / 2,
         behavior: "smooth",
       });
