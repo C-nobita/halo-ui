@@ -3,7 +3,7 @@
     <halo-header alwaysTop scrollHide :headerList="header" @itemClick="itemClickHandler">
       <template #right
         ><span style="font-size: 12px; margin-left: 16px"
-          >version: {{ version }}</span
+          >version: {{ version }} / Beta</span
         ></template
       >
     </halo-header>
