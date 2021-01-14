@@ -15,6 +15,7 @@ import { Switch } from "./Switch"
 import { Loading } from "./Loading"
 import { Radio } from "./Radio"
 import { RadioGroup } from "./RadioGroup"
+import { Input } from "./Input"
 
 // export const version: string;
 
@@ -41,5 +42,6 @@ export {
   Switch,
   Loading,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Input
 }

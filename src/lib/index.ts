@@ -21,6 +21,7 @@ import Switch from "./Switch"
 import Loading from "./Loading"
 import Radio from "./Radio"
 import RadioGroup from "./RadioGroup"
+import Input from "./Input"
 
 const components = [
   Button,
@@ -36,7 +37,8 @@ const components = [
   Switch,
   Loading,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Input
 ]
 
 
@@ -60,7 +62,8 @@ export {
   Switch,
   Loading,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Input
 }
 
 export default {

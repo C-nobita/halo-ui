@@ -14,3 +14,20 @@ $h: 39px;
 $color: #333;
 $grey: grey;
 $white: #fff;
+
+@font-face {
+  font-family: 'iconfont';  /* project id 2326720 */
+  src: url('//at.alicdn.com/t/font_2326720_m72pke2uck.eot');
+  src: url('//at.alicdn.com/t/font_2326720_m72pke2uck.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2326720_m72pke2uck.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2326720_m72pke2uck.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2326720_m72pke2uck.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2326720_m72pke2uck.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
