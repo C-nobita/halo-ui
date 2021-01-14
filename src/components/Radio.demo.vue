@@ -12,7 +12,7 @@
 
       <halo-radio :lable="'bb'" disabled>{{ 'bb(disabled)' }}</halo-radio>
     </halo-radio-group>
-    <div>lable: <input type="text" v-model="value" /></div>
+    <halo-input lable="lable: " v-model:value="value" />
   </div>
 </template>
 
