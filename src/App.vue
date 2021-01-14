@@ -90,6 +90,11 @@ const asideArr = [
     path: "/doc/radio",
     openAside: true,
   },
+  {
+    name: "Input组件",
+    path: "/doc/input",
+    openAside: true,
+  },
 ].sort((a, b) => {
   return a.name[0] <= b.name[0] ? -1 : 1;
 });

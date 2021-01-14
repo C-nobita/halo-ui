@@ -13,7 +13,8 @@ import DatePickerDemo from "./views/DatePickerDemo.vue";
 import TabsDemo from "./views/TabsDemo.vue";
 import SwitchDemo from "./views/SwitchDemo.vue";
 import LoadingDemo from "./views/LoadingDemo.vue";
-import RadioDemo from "./views/RadioDemo.vue"
+import RadioDemo from "./views/RadioDemo.vue";
+import InputDemo from "./views/InputDemo.vue";
 
 
 import { h } from 'vue';
@@ -92,6 +93,10 @@ export const router = createRouter({
         {
           path: "radio",
           component: RadioDemo
+        },
+        {
+          path: "input",
+          component: InputDemo
         },
         {
           path: ":catchAll(.*)",
