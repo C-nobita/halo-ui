@@ -68,6 +68,13 @@ export default defineComponent({
         type: "string | number",
       },
       {
+        prop: "lable",
+        desc: "输入框前面的描述",
+        default: "",
+        require: "false",
+        type: "string",
+      },
+      {
         prop: "type",
         desc: "组件类型/为 custom 自定义样式",
         default: "",
