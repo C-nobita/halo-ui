@@ -34,7 +34,6 @@ export default defineComponent({
     border-width: 6px;
     border-style: solid;
     border-color: transparent;
-    background-color: $color;
     border-top-color: white;
     animation: rotate 1.6s infinite ease-in-out;
   }
