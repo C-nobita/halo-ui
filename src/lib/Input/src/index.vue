@@ -1,4 +1,6 @@
 <template>
+<div class="halo_input_container">
+  <span v-if="lable" class="lable">{{ lable }}</span>
   <div class="halo_input halo_hover" :class="disabled ? 'input_disabled' : ''">
     <div class="halo_input_wraper" :class="theme">
       <input
@@ -17,6 +19,7 @@
         @click="innerType = innerType === inputType ? 'text' : inputType"
       ></span>
     </div>
+  </div>
   </div>
 </template>
 
@@ -45,6 +48,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    lable: {
+      type: String,
+      default: ''
+    }
   },
   emits: ["update:value"],
   setup(props) {
@@ -68,14 +75,27 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "../../halo.scss";
+.halo_input_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .lable {
+    margin-right: 6px;
+    font-size: .8em;
+    white-space: nowrap;
+  }
+}
 .halo_input {
+  height: 100%;
   padding: 2px;
   box-sizing: border-box;
+  width: 100%;
   &_wraper {
     height: $h;
     width: 200px;
     box-sizing: border-box;
     position: relative;
+    display: flex;
     & > &_original[disabled] {
       cursor: not-allowed;
       background-color: gray;
