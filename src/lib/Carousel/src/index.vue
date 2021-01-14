@@ -25,16 +25,16 @@
       <Button
         :disabled="disabledLeft"
         type="custom"
-        class="operator_left"
+        class="operator_left iconfont"
         @click="operator('l')"
-        ><slot name="left">&lt;</slot></Button
+        ><slot name="left">&#xe640;</slot></Button
       >
       <Button
         :disabled="disabledRight"
         type="custom"
-        class="operator_right"
+        class="operator_right iconfont"
         @click="operator('r')"
-        ><slot name="right">&gt;</slot></Button
+        ><slot name="right">&#xe63e;</slot></Button
       >
     </div>
   </div>

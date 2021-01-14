@@ -22,9 +22,9 @@
       <div class="halo_aside_footer">
         <slot name="footer"></slot>
       </div>
-      <Button type="custom" :hoverLight="false" class="operator" @click="open = !open">
+      <Button type="custom" :hoverLight="false" class="operator iconfont" @click="open = !open">
         <slot name="menu">
-          <span class="iconfont">&#xe7f2;</span>
+          &#xe7f2;
         </slot>
       </Button>
     </div>
