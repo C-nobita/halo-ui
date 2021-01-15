@@ -1,37 +1,34 @@
-import { getCurrentInstance, onBeforeUnmount } from 'vue';
-import Dialog from './src/index.vue';
-import { mountComponent } from "../utils/mountComponent";
-export default function createDialogInstance(props) {
-  const { instance, unmount } = mountComponent({
-    setup() {
-      let timer;
-      const onClose = () => {
-        props.onClosed && props.onClosed;
-        timer = setTimeout(() => {
-          unmount();
-        }, 600);
-      };
-      const visible = true;
-      const dialogProps = { ...props }
-      delete dialogProps.onClose
-      getCurrentInstance().render = () => (
-        <Dialog {
-          ...{
-            ...props,
-            onClose,
-            visible,
-            oneTime: true
-          }
-        } />
-      );
+import { createVNode, render, nextTick } from 'vue';
+import DialogConstructor from './src/index.vue';
+let vm;
+let $el;
+export function close() {
+  setTimeout(() => {
+    render(null, $el);
+    nextTick(() => {
+      document.body.removeChild($el)
+    })
+  }, 300)
+}
+export default function createDialogInstance(options = {}) {
+  const container = document.createElement('div')
+  const visible = true;
+  const onClose = () => {
+    options.onClosed && options.onClosed();
+    close();
+  };
+  const dialogProps = { ...options, visible, onClose, oneTime: true }
 
-      onBeforeUnmount(() => {
-        clearTimeout(timer);
-      });
-      return {
-      };
-    },
-  });
+  vm = createVNode(
+    DialogConstructor,
+    dialogProps,
+    {}
+  )
+  render(vm, container)
+  $el = container
+  document.body.appendChild(container)
 
-  return instance;
+  return {
+    close,
+  }
 }

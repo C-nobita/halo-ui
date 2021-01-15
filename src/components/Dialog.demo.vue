@@ -11,7 +11,6 @@
     <halo-button @click="dialogVisible = true">打开dialog</halo-button>
 
     <halo-button @click="callDialog">以API的方式打开dialog</halo-button>
-
   </div>
 </template>
 
@@ -23,12 +22,15 @@ export default defineComponent({
     const confirmHandler = () => {
       dialogVisible.value = false;
     };
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance();
     const callDialog = () => {
-      proxy.$callDialog({
-        content: '这是通过调用API的方式打开的Dialog!'
-      })
-    }
+      const { close } = proxy.$callDialog({
+        content: "这是通过调用API的方式打开的Dialog!",
+      });
+      console.log(close)
+      // 如果你想以 api 的方式关闭你呼出的 dialog 请调用返回的 close 函数
+      // close();
+    };
     return {
       dialogVisible,
       confirmHandler,

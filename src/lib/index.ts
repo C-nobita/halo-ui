@@ -10,9 +10,13 @@ interface DialogConig {
   confirmTxt?: String;
   onClose?: Function;
 }
+interface methodReturn {
+  close?: () => void;
+}
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    $callDialog: (dialogConig?: DialogConig) => ComponentPublicInstance
+    $callDialog: (dialogConig?: DialogConig) => methodReturn;
+    $notice: () => methodReturn;
   }
 }
 
@@ -20,6 +24,7 @@ declare module "@vue/runtime-core" {
 import { App } from 'vue'
 import halo from "./halo"
 import createDialogInstance from "./Dialog/dialog.jsx"
+import createNotificationInstance from "./Notice/notice.jsx"
 halo(window.haloRadius)
 
 import Button from "./Button"
@@ -61,6 +66,10 @@ const methods = [
   {
     method: 'callDialog',
     fun: createDialogInstance
+  },
+  {
+    method: 'notice',
+    fun: createNotificationInstance
   }
 ]
 
