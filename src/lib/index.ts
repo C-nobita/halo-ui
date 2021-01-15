@@ -9,14 +9,18 @@ interface DialogConig {
   content?: String;
   confirmTxt?: String;
   onClose?: Function;
+  title?: String;
+  html?: String;
+  showClose?: Boolean;
+  duration?: Number;
 }
 interface methodReturn {
   close?: () => void;
 }
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    $callDialog: (dialogConig?: DialogConig) => methodReturn;
-    $notice: () => methodReturn;
+    $callDialog: (methodConifg?: DialogConig) => methodReturn;
+    $notice: (methodConifg?: DialogConig) => methodReturn;
   }
 }
 
@@ -42,6 +46,7 @@ import Loading from "./Loading"
 import Radio from "./Radio"
 import RadioGroup from "./RadioGroup"
 import Input from "./Input"
+import Notice from "./Notice"
 
 const components = [
   Button,
@@ -99,7 +104,8 @@ export {
   Loading,
   Radio,
   RadioGroup,
-  Input
+  Input,
+  Notice
 }
 
 export default {

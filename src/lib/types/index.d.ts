@@ -16,6 +16,7 @@ import { Loading } from "./Loading"
 import { Radio } from "./Radio"
 import { RadioGroup } from "./RadioGroup"
 import { Input } from "./Input"
+import { Notice } from "./Notice"
 
 // export const version: string;
 
@@ -36,5 +37,6 @@ export {
   Loading,
   Radio,
   RadioGroup,
-  Input
+  Input,
+  Notice
 }
