@@ -36,6 +36,7 @@ export default defineComponent({
     border-color: transparent;
     border-top-color: white;
     animation: rotate 1.6s infinite ease-in-out;
+    background-color: $color;
   }
   &_text {
     z-index: 1;
