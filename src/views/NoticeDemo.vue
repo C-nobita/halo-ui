@@ -108,8 +108,8 @@ export default defineComponent({
 
     const code = computed(() => {
       return Prism.highlight(
-        `const { proxy } = getCurrentInstance(): MethodReturn;
-proxy.$notice(config?: MethodConifg);`,
+        `const { proxy } = getCurrentInstance();
+proxy.$notice(config?: MethodConifg): MethodReturn;`,
         Prism.languages.js,
         "js"
       );

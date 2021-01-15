@@ -152,8 +152,8 @@ export default defineComponent({
     ]);
     const code = computed(() => {
       return Prism.highlight(
-        `const { proxy } = getCurrentInstance(): MethodReturn;
-proxy.$callDialog(config?: MethodConifg);`,
+        `const { proxy } = getCurrentInstance();
+proxy.$callDialog(config?: MethodConifg): MethodReturn;`,
         Prism.languages.js,
         "js"
       );
