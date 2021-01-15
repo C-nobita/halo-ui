@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-interface DialogConig {
+interface MethodConfig {
   confirm?: Function;
   content?: String;
   confirmTxt?: String;
@@ -14,13 +14,13 @@ interface DialogConig {
   showClose?: Boolean;
   duration?: Number;
 }
-interface methodReturn {
+interface MethodReturn {
   close?: () => void;
 }
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    $callDialog: (methodConifg?: DialogConig) => methodReturn;
-    $notice: (methodConifg?: DialogConig) => methodReturn;
+    $callDialog: (methodConifg?: MethodConfig) => MethodReturn;
+    $notice: (methodConifg?: MethodConfig) => MethodReturn;
   }
 }
 
