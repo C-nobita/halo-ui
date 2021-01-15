@@ -9,20 +9,30 @@
       :confirm="confirmHandler"
     ></halo-dialog>
     <halo-button @click="dialogVisible = true">打开dialog</halo-button>
+
+    <halo-button @click="callDialog">以API的方式打开dialog</halo-button>
+
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, getCurrentInstance } from "vue";
 export default defineComponent({
   setup() {
     const dialogVisible = ref(false);
     const confirmHandler = () => {
       dialogVisible.value = false;
     };
+    const { proxy } = getCurrentInstance()
+    const callDialog = () => {
+      proxy.$callDialog({
+        content: '这是通过调用API的方式打开的Dialog!'
+      })
+    }
     return {
       dialogVisible,
       confirmHandler,
+      callDialog,
     };
   },
 });

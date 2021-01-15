@@ -13,20 +13,11 @@
       @itemClick="itemClickHandler"
     ></halo-aside>
     <router-view />
-    <halo-dialog
-      v-model:visible="dialogVisible"
-      content="欢迎使用 halo-ui ! 这是自己学习中搭建的ui框架，第一次尝试难免有许多问题，如有问题欢迎提 issue 反馈，期待你的 follow 和 star！ : )"
-      :confirm="
-        () => {
-          dialogVisible = false;
-        }
-      "
-    ></halo-dialog>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, onMounted } from "vue";
+import { reactive, toRefs, onMounted, getCurrentInstance } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import pack from "../package";
 const asideArr = [
@@ -132,17 +123,11 @@ export default {
         },
         ...asideArr,
       ],
-      dialogVisible: false,
       openVlaue: false,
       version: pack.version,
     });
     const router = useRouter();
     const route = useRoute();
-    onMounted(() => {
-      setTimeout(() => {
-        data.dialogVisible = false;
-      });
-    });
     const itemClickHandler = (params) => {
       console.log("Header Item Click! => ", params);
       if (params.path) {
