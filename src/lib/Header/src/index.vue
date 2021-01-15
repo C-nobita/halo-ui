@@ -146,7 +146,7 @@ export default defineComponent({
   }
   &_always_top {
     position: sticky;
-    z-index: 99999;
+    z-index: 999;
     top: 0;
   }
   &_scroll_hide {
