@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2>Dialog 组件</h2>
+    <h2>Notice 组件</h2>
     <span class="tip">ps: 如果你需要自定义组件样式请加上 type 属性并且值为 custom.</span>
-    <Demo :component="DialogDemo" />
+    <Demo :component="NoticeDemo" />
     <h3>Props</h3>
-    <halo-table :header="propsTableHeader" :data="propsTableData"></halo-table>
+    暂无
     <h3>Slots</h3>
     暂无
     <h3>Events</h3>
@@ -23,65 +23,13 @@
 <script lang="ts">
 const Prism = (window as any).Prism;
 import Demo from "../components/Demo.vue";
-import DialogDemo from "../components/Dialog.demo.vue";
+import NoticeDemo from "../components/Notice.demo.vue";
 import { defineComponent, ref, computed } from "vue";
 export default defineComponent({
   components: {
     Demo,
   },
   setup() {
-    const propsTableHeader = ref([
-      {
-        key: "prop",
-        name: "prop",
-      },
-      {
-        key: "type",
-        name: "参数类型",
-      },
-      {
-        key: "desc",
-        name: "描述",
-      },
-      {
-        key: "default",
-        name: "默认值",
-      },
-      {
-        key: "require",
-        name: "是否必填",
-      },
-    ]);
-    const propsTableData = ref([
-      {
-        prop: "visible",
-        desc: "显示dialog",
-        default: "false",
-        require: "false",
-        type: "Boolean",
-      },
-      {
-        prop: "confirm",
-        desc: "点击dialog的确认按钮",
-        default: "() => void",
-        require: "false",
-        type: "Function",
-      },
-      {
-        prop: "content",
-        desc: "dialog的提示内容",
-        default: "",
-        require: "false",
-        type: "String",
-      },
-      {
-        prop: "confirmTxt",
-        desc: "确认按钮的文案",
-        default: "好的",
-        require: "false",
-        type: "String",
-      },
-    ]);
     const methodConfigHeader = ref([
       {
         key: "key",
@@ -106,10 +54,24 @@ export default defineComponent({
     ]);
     const methodConfigData = ref([
       {
-        key: "confirm",
-        desc: "点击确认按钮执行的方法",
-        type: "Function",
-        default: '() => {}',
+        key: "duration",
+        desc: "Notice 组件自动关闭的时间，为0则不会自动关闭",
+        type: "Number",
+        default: 3000,
+        require: "false",
+      },
+      {
+        key: "showClose",
+        desc: "显示关闭按钮",
+        type: "Boolean",
+        default: "true",
+        require: "false",
+      },
+      {
+        key: "title",
+        desc: "标题",
+        type: "String",
+        default: "",
         require: "false",
       },
       {
@@ -120,17 +82,10 @@ export default defineComponent({
         require: "false",
       },
       {
-        key: "confirmTxt",
-        desc: "确认按钮的文字描述",
-        type: "String",
-        default: "好的",
-        require: "false",
-      },
-      {
-        key: "clickOverlayCancel",
-        desc: "点击蒙板层是否关闭",
-        type: "Boolean",
-        default: "true",
+        key: "html",
+        desc: "内容 / 对比content字段，html会优先显示",
+        type: "JSX",
+        default: "",
         require: "false",
       },
     ]);
@@ -150,19 +105,17 @@ export default defineComponent({
         desc: "调用会关闭当前实例",
       },
     ]);
+
     const code = computed(() => {
       return Prism.highlight(
         `const { proxy } = getCurrentInstance(): MethodReturn;
-proxy.$callDialog(config?: MethodConifg);`,
+proxy.$notice(config?: MethodConifg);`,
         Prism.languages.js,
         "js"
       );
     });
-
     return {
-      DialogDemo,
-      propsTableHeader,
-      propsTableData,
+      NoticeDemo,
       code,
       methodConfigHeader,
       methodConfigData,

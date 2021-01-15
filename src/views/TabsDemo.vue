@@ -9,7 +9,7 @@
     暂无
     <h3>Events</h3>
     <halo-table :header="eventsTableHeader" :data="eventsTableData"></halo-table>
-    <h3>types</h3>
+    <h3>Types</h3>
     <halo-table :header="typesTableHeader" :data="typesTableData"></halo-table>
     <h3>TabsItem 子组件 Props</h3>
     <halo-table :header="propsTableHeader" :data="TabsPropsTableData"></halo-table>

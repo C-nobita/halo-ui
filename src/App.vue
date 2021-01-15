@@ -86,6 +86,11 @@ const asideArr = [
     path: "/doc/input",
     openAside: true,
   },
+  {
+    name: "Notice组件",
+    path: "/doc/notice",
+    openAside: true,
+  },
 ].sort((a, b) => {
   return a.name[0] <= b.name[0] ? -1 : 1;
 });

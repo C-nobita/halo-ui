@@ -15,6 +15,7 @@ import SwitchDemo from "./views/SwitchDemo.vue";
 import LoadingDemo from "./views/LoadingDemo.vue";
 import RadioDemo from "./views/RadioDemo.vue";
 import InputDemo from "./views/InputDemo.vue";
+import NoticeDemo from "./views/NoticeDemo.vue"
 
 
 import { h } from 'vue';
@@ -97,6 +98,10 @@ export const router = createRouter({
         {
           path: "input",
           component: InputDemo
+        },
+        {
+          path: "notice",
+          component: NoticeDemo
         },
         {
           path: ":catchAll(.*)",

@@ -9,7 +9,7 @@
     <halo-table :header="slotTableHeader" :data="slotTableData"></halo-table>
     <h3>Events</h3>
     <halo-table :header="eventTableHeader" :data="eventTableData"></halo-table>
-    <h3>types</h3>
+    <h3>Types</h3>
     <halo-table :header="typesTableHeader" :data="typesTableData"></halo-table>
   </div>
 </template>

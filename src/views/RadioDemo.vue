@@ -9,7 +9,7 @@
     <halo-table :header="slotTableHeader" :data="slotTableData"></halo-table>
     <h3>Events</h3>
     <halo-table :header="eventTableHeader" :data="eventTableData"></halo-table>
-    <h3>types</h3>
+    <h3>Types</h3>
     暂无
     <h2>RadioGroup 组件</h2>
     <h3>Props</h3>
@@ -18,7 +18,7 @@
     <halo-table :header="slotTableHeader" :data="secSlotTableData"></halo-table>
     <h3>Events</h3>
     <halo-table :header="eventTableHeader" :data="secEventTableData"></halo-table>
-    <h3>types</h3>
+    <h3>Types</h3>
     暂无
   </div>
 </template>

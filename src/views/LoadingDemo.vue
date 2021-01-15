@@ -9,7 +9,7 @@
     <halo-table :header="slotTableHeader" :data="slotTableData"></halo-table>
     <h3>Events</h3>
     暂无
-    <h3>types</h3>
+    <h3>Types</h3>
     暂无
   </div>
 </template>
