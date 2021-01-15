@@ -21,13 +21,6 @@ import { Input } from "./Input"
 
 export const install: (app: App) => any
 
-// export class Aside extends HaloComponent { }
-// export class Button extends HaloComponent { }
-// export class Dialog extends HaloComponent { }
-// export class Dropdown extends HaloComponent { }
-// export class Header extends HaloComponent { }
-
-
 export {
   Aside,
   Button,

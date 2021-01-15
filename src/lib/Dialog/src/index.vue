@@ -2,12 +2,12 @@
   <Teleport to="body">
     <div
       class="halo_dialong_overlay"
-      :class="{ show_dialog: visible }"
-      @click.stop="emit('update:visible', false)"
+      :class="{ show_dialog: show }"
+      @click.stop="overlayClick"
     >
       <div
         class="halo_dialong_wraper halo_hover"
-        :class="{ show_dialog_wraper: visible }"
+        :class="{ show_dialog_wraper: show }"
         @click.stop
       >
         <div class="halo_dialong_wraper_content halo_none">
@@ -15,7 +15,7 @@
           <Button
             type="custom"
             class="halo_dialong_wraper_content_btn"
-            @click.stop="confirm"
+            @click.stop="comfirmHandler"
             >{{ confirmTxt }}</Button
           >
         </div>
@@ -26,16 +26,14 @@
 
 <script lang="ts">
 import Button from "../../Button";
-import { defineComponent, watchEffect, reactive, toRefs, getCurrentInstance } from "vue";
-declare interface PropsTypes {
-  visible: Boolean;
-  confirm: Function;
-  content: String;
-  confirmTxt: String;
-}
-declare interface DataTypes {
-  show: Boolean;
-}
+import {
+  defineComponent,
+  getCurrentInstance,
+  watch,
+  ref,
+  watchEffect,
+  onBeforeUnmount,
+} from "vue";
 export default defineComponent({
   name: "halo-dialog",
   props: {
@@ -55,28 +53,55 @@ export default defineComponent({
       type: String,
       default: "好的",
     },
+    onClose: Function,
+    oneTime: {
+      type: Boolean,
+      default: false,
+    },
+    clickOverlayCancel: {
+      type: Boolean,
+      default: true,
+    },
   },
   components: {
     Button,
   },
-  emits: ['update:visible'],
-  setup(props: PropsTypes) {
-    const { emit } = getCurrentInstance();
-    const data: DataTypes = reactive({
-      show: false,
-    });
+  emits: ["update:visible"],
+  setup(props) {
+    const show = ref();
+    let timer;
     watchEffect(() => {
-      data.show = props.visible;
+      if (props.oneTime) {
+        timer = setTimeout(() => {
+          show.value = props.visible;
+        });
+      } else {
+        show.value = props.visible;
+      }
     });
-
-    const callDialog = () => {
-      data.show = true;
+    const { emit } = getCurrentInstance();
+    watch(
+      () => show.value,
+      (val) => {
+        if (!val) props.onClose && props.onClose();
+      }
+    );
+    const overlayClick = () => {
+      if (!props.clickOverlayCancel) return;
+      if (props.oneTime) show.value = false;
+      emit("update:visible", false);
     };
-
+    const comfirmHandler = () => {
+      props.confirm && props.confirm();
+      if (props.oneTime) show.value = false;
+    };
+    onBeforeUnmount(() => {
+      clearTimeout(timer);
+    });
     return {
-      ...toRefs(data),
-      callDialog,
-      emit,
+      overlayClick,
+      show,
+      comfirmHandler,
     };
   },
 });

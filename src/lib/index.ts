@@ -3,8 +3,23 @@ declare global {
     haloRadius?: number
   }
 }
+
+interface DialogConig {
+  confirm?: Function;
+  content?: String;
+  confirmTxt?: String;
+  onClose?: Function;
+}
+declare module "@vue/runtime-core" {
+  interface ComponentCustomProperties {
+    $callDialog: (dialogConig?: DialogConig) => ComponentPublicInstance
+  }
+}
+
+
 import { App } from 'vue'
 import halo from "./halo"
+import createDialogInstance from "./Dialog/dialog.jsx"
 halo(window.haloRadius)
 
 import Button from "./Button"
@@ -42,9 +57,21 @@ const components = [
 ]
 
 
+const methods = [
+  {
+    method: 'callDialog',
+    fun: createDialogInstance
+  }
+]
+
+
 const install = (app: App): void => {
   components.forEach(component => {
     app.component(component.name, component)
+  });
+
+  methods.forEach(item => {
+    app.config.globalProperties[`$${item.method}`] = item.fun
   })
 }
 
