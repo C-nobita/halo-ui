@@ -22,9 +22,9 @@
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup() {
-    const value1 = ref(123);
-    const value2 = ref(123);
-    const value3 = ref(123);
+    const value1 = ref("123");
+    const value2 = ref("123");
+    const value3 = ref("123");
     return {
       value1,
       value2,

@@ -4,7 +4,7 @@
   <div class="halo_input halo_hover" :class="disabled ? 'input_disabled' : ''">
     <div class="halo_input_wraper" :class="theme">
       <input
-        :ref="(dom = originalEl = dom)"
+        :ref="(dom => originalEl = dom)"
         v-model="innerValue"
         :disabled="disabled"
         :type="innerType"
