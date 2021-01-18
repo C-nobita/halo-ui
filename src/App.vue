@@ -1,6 +1,9 @@
 <template>
   <div class="app">
     <halo-header alwaysTop scrollHide :headerList="header" @itemClick="itemClickHandler">
+      <template #left>
+        <img style="height: 100%" :src="libLogo">
+      </template>
       <template #right
         ><span style="font-size: 12px; margin-left: 16px"
           >version: {{ version }} / Beta</span
@@ -11,15 +14,22 @@
       :openVlaue="openVlaue"
       :asideList="asideList"
       @itemClick="itemClickHandler"
-    ></halo-aside>
+    >
+      <template #header>
+        <img style="height: 76%" :src="Logo">
+      </template>
+    </halo-aside>
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, onMounted, getCurrentInstance } from "vue";
+import { reactive, toRefs } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import pack from "../package";
+import libLogo from "./assets/libLogo.png"
+import Logo from "./assets/LOGO.png"
+
 const asideArr = [
   {
     name: "Aside组件",
@@ -144,9 +154,12 @@ export default {
       }
       data.openVlaue = params.openAside;
     };
+    console.log(Logo)
     return {
       ...toRefs(data),
       itemClickHandler,
+      Logo,
+      libLogo
     };
   },
 };

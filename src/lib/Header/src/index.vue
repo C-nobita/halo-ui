@@ -116,6 +116,7 @@ export default defineComponent({
   overflow: hidden;
   transition: all linear 0.6s;
   padding: 0 0 2px;
+  min-width: 1000px;
   &_wraper {
     height: 100%;
     width: 100%;

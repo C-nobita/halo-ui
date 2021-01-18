@@ -1,7 +1,7 @@
 <template>
   <div class="halo_aside halo_hover" :class="{ halo_aside_close: !open }">
     <div class="halo_aside_wraper halo_none" :class="theme">
-      <div class="halo_aside_header">
+      <div class="halo_aside_header" :class="{ halo_aside_slot_hide: !open }">
         <slot name="header"></slot>
       </div>
       <div
@@ -19,7 +19,7 @@
           {{ item.name }}</Button
         >
       </div>
-      <div class="halo_aside_footer">
+      <div class="halo_aside_footer" :class="{ halo_aside_slot_hide: !open }">
         <slot name="footer"></slot>
       </div>
       <Button
@@ -158,6 +158,11 @@ export default defineComponent({
     justify-content: center;
     max-height: 25%;
     align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s linear;
+  }
+  &_slot_hide {
+    opacity: 0;
   }
   &_theme_custom {
     height: 100%;
