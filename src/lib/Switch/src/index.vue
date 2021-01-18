@@ -12,7 +12,7 @@
       class="halo_switch_original_el"
       type="checkbox"
       true-value="true"
-      @change="emit('update:on', value)"
+      @change="emit('update:on', !!value)"
     />
     <div :style="style" class="halo_switch_content halo_none">
       <div class="halo_switch_content_silder halo_hover" :class="value ? 'on' : 'off'">
