@@ -45,9 +45,9 @@ export default defineComponent({
     let timer;
     let closeTimer;
     onMounted(() => {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         props.render && props.render();
-      });
+      }, 100);
       if (props.duration) {
         closeTimer = setTimeout(() => {
           props.cancel()

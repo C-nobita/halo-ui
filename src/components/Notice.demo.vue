@@ -18,7 +18,7 @@ export default defineComponent({
     const callNotice1 = () => {
       const noticeReturn = proxy.$notice({
         title: "test",
-        content: "这是一个会自动关闭的Notice组件,默认事件3s",
+        content: "这是一个会自动关闭的Notice组件,默认时间 3s",
       });
       console.log("Notice return => ", noticeReturn);
     };
