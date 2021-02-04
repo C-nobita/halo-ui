@@ -111,7 +111,7 @@ export default defineComponent({
           if (week === 0 && lastDays - firstDay + day <= lastDays)
             weekArr.push({ day: lastDays - firstDay + day });
           else {
-            if (currentDay <= lastDays) {
+            if (currentDay <= days) {
               weekArr.push({ day: currentDay, current: true });
               currentDay++;
             } else {
